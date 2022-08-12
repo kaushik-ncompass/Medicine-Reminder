@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C64BCCEBE0E9DE4340E1B25 /* Pods_Medicine_Remainder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9513377FACF61D9B149997B /* Pods_Medicine_Remainder.framework */; };
+		B108F9B928A4BCD60051BC45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108F9B828A4BCD60051BC45 /* AppDelegate.swift */; };
+		B108F9BB28A4BCD60051BC45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108F9BA28A4BCD60051BC45 /* SceneDelegate.swift */; };
+		B108F9BD28A4BCD60051BC45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108F9BC28A4BCD60051BC45 /* ViewController.swift */; };
+		B108F9C028A4BCD60051BC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B108F9BE28A4BCD60051BC45 /* Main.storyboard */; };
+		B108F9C228A4BCD70051BC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B108F9C128A4BCD70051BC45 /* Assets.xcassets */; };
+		B108F9C528A4BCD70051BC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B108F9C328A4BCD70051BC45 /* LaunchScreen.storyboard */; };
+		B14F278028A67CA70097D4B3 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F277F28A67CA70097D4B3 /* iOSDropDown.framework */; };
+		B1DA464528A4D77100C97A97 /* AddRemainderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA464428A4D77100C97A97 /* AddRemainderViewController.swift */; };
+		B1DA464728A4E09500C97A97 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA464628A4E09500C97A97 /* Base.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5F3F8FC67E6BB6E6260749F9 /* Pods-Medicine Remainder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicine Remainder.debug.xcconfig"; path = "Target Support Files/Pods-Medicine Remainder/Pods-Medicine Remainder.debug.xcconfig"; sourceTree = "<group>"; };
+		A9513377FACF61D9B149997B /* Pods_Medicine_Remainder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicine_Remainder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B03D6D1FBB666E8218419982 /* Pods-Medicine Remainder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicine Remainder.release.xcconfig"; path = "Target Support Files/Pods-Medicine Remainder/Pods-Medicine Remainder.release.xcconfig"; sourceTree = "<group>"; };
+		B108F9B528A4BCD60051BC45 /* Medicine Remainder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medicine Remainder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B108F9B828A4BCD60051BC45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B108F9BA28A4BCD60051BC45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B108F9BC28A4BCD60051BC45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B108F9BF28A4BCD60051BC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B108F9C128A4BCD70051BC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B108F9C428A4BCD70051BC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B108F9C628A4BCD70051BC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B14F277F28A67CA70097D4B3 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1DA464428A4D77100C97A97 /* AddRemainderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemainderViewController.swift; sourceTree = "<group>"; };
+		B1DA464628A4E09500C97A97 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B108F9B228A4BCD60051BC45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B14F278028A67CA70097D4B3 /* iOSDropDown.framework in Frameworks */,
+				9C64BCCEBE0E9DE4340E1B25 /* Pods_Medicine_Remainder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41ED36ED34F804BFCEC430C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B14F277F28A67CA70097D4B3 /* iOSDropDown.framework */,
+				A9513377FACF61D9B149997B /* Pods_Medicine_Remainder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82A455F97E0C1EE682CFECA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F3F8FC67E6BB6E6260749F9 /* Pods-Medicine Remainder.debug.xcconfig */,
+				B03D6D1FBB666E8218419982 /* Pods-Medicine Remainder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B108F9AC28A4BCD60051BC45 = {
+			isa = PBXGroup;
+			children = (
+				B108F9B728A4BCD60051BC45 /* Medicine Remainder */,
+				B108F9B628A4BCD60051BC45 /* Products */,
+				82A455F97E0C1EE682CFECA4 /* Pods */,
+				41ED36ED34F804BFCEC430C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B108F9B628A4BCD60051BC45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B108F9B528A4BCD60051BC45 /* Medicine Remainder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B108F9B728A4BCD60051BC45 /* Medicine Remainder */ = {
+			isa = PBXGroup;
+			children = (
+				B108F9B828A4BCD60051BC45 /* AppDelegate.swift */,
+				B108F9BA28A4BCD60051BC45 /* SceneDelegate.swift */,
+				B108F9BC28A4BCD60051BC45 /* ViewController.swift */,
+				B1DA464428A4D77100C97A97 /* AddRemainderViewController.swift */,
+				B108F9BE28A4BCD60051BC45 /* Main.storyboard */,
+				B1DA464628A4E09500C97A97 /* Base.swift */,
+				B108F9C128A4BCD70051BC45 /* Assets.xcassets */,
+				B108F9C328A4BCD70051BC45 /* LaunchScreen.storyboard */,
+				B108F9C628A4BCD70051BC45 /* Info.plist */,
+			);
+			path = "Medicine Remainder";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B108F9B428A4BCD60051BC45 /* Medicine Remainder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B108F9C928A4BCD70051BC45 /* Build configuration list for PBXNativeTarget "Medicine Remainder" */;
+			buildPhases = (
+				588F7E2660634C378BA20D64 /* [CP] Check Pods Manifest.lock */,
+				B108F9B128A4BCD60051BC45 /* Sources */,
+				B108F9B228A4BCD60051BC45 /* Frameworks */,
+				B108F9B328A4BCD60051BC45 /* Resources */,
+				C54F175EA45FAFADB216CBAB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Medicine Remainder";
+			productName = "Medicine Remainder";
+			productReference = B108F9B528A4BCD60051BC45 /* Medicine Remainder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B108F9AD28A4BCD60051BC45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					B108F9B428A4BCD60051BC45 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = B108F9B028A4BCD60051BC45 /* Build configuration list for PBXProject "Medicine Remainder" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B108F9AC28A4BCD60051BC45;
+			productRefGroup = B108F9B628A4BCD60051BC45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B108F9B428A4BCD60051BC45 /* Medicine Remainder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B108F9B328A4BCD60051BC45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B108F9C528A4BCD70051BC45 /* LaunchScreen.storyboard in Resources */,
+				B108F9C228A4BCD70051BC45 /* Assets.xcassets in Resources */,
+				B108F9C028A4BCD60051BC45 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		588F7E2660634C378BA20D64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Medicine Remainder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C54F175EA45FAFADB216CBAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicine Remainder/Pods-Medicine Remainder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicine Remainder/Pods-Medicine Remainder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Medicine Remainder/Pods-Medicine Remainder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B108F9B128A4BCD60051BC45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1DA464528A4D77100C97A97 /* AddRemainderViewController.swift in Sources */,
+				B108F9BD28A4BCD60051BC45 /* ViewController.swift in Sources */,
+				B1DA464728A4E09500C97A97 /* Base.swift in Sources */,
+				B108F9B928A4BCD60051BC45 /* AppDelegate.swift in Sources */,
+				B108F9BB28A4BCD60051BC45 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B108F9BE28A4BCD60051BC45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B108F9BF28A4BCD60051BC45 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B108F9C328A4BCD70051BC45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B108F9C428A4BCD70051BC45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B108F9C728A4BCD70051BC45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B108F9C828A4BCD70051BC45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B108F9CA28A4BCD70051BC45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F3F8FC67E6BB6E6260749F9 /* Pods-Medicine Remainder.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K2MDV5B455;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Medicine Remainder/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaushik.Medicine-Remainder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B108F9CB28A4BCD70051BC45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B03D6D1FBB666E8218419982 /* Pods-Medicine Remainder.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K2MDV5B455;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Medicine Remainder/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaushik.Medicine-Remainder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B108F9B028A4BCD60051BC45 /* Build configuration list for PBXProject "Medicine Remainder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B108F9C728A4BCD70051BC45 /* Debug */,
+				B108F9C828A4BCD70051BC45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B108F9C928A4BCD70051BC45 /* Build configuration list for PBXNativeTarget "Medicine Remainder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B108F9CA28A4BCD70051BC45 /* Debug */,
+				B108F9CB28A4BCD70051BC45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B108F9AD28A4BCD60051BC45 /* Project object */;
+}

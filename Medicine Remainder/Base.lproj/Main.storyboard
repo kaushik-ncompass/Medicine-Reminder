@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y2t-QD-WHj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Medicine Remainder-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Medicine_Remainder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVS-It-YNU">
+                                <rect key="frame" x="306" y="768" width="128" height="128"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="add"/>
+                                <connections>
+                                    <action selector="addReminderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BXa-hB-frA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RVS-It-YNU" secondAttribute="trailing" constant="-20" id="31n-LS-Gze"/>
+                            <constraint firstAttribute="bottom" secondItem="RVS-It-YNU" secondAttribute="bottom" id="9lU-rd-iMs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Medicine Remainder" largeTitleDisplayMode="always" id="Y4H-Mu-xx1">
+                        <barButtonItem key="leftBarButtonItem" id="Zhb-P6-Pbn">
+                            <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                <hierarchicalColors>
+                                    <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="tertiaryLabelColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="DU7-yg-n8z" kind="show" identifier="addRemainder" id="CIU-i7-Izh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2749.275362318841" y="81.696428571428569"/>
+        </scene>
+        <!--Medicine Remainder-->
+        <scene sceneID="oQA-Go-IeC">
+            <objects>
+                <viewController id="DU7-yg-n8z" customClass="AddRemainderViewController" customModule="Medicine_Remainder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eIp-ie-SwT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piX-BA-ZjP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zem-U9-jTf" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="406" height="900"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="ZH1-9L-2f7">
+                                                <rect key="frame" x="-4" y="22" width="414" height="813"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpI-di-hVc">
+                                                        <rect key="frame" x="16" y="10" width="134.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="sTn-MW-6PR"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iSG-ev-AlM">
+                                                        <rect key="frame" x="0.0" y="42" width="414" height="250"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foF-lk-uaV">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="62.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Member" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSA-0T-F6A" customClass="JRDropDown">
+                                                                        <rect key="frame" x="16" y="3.5" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="mzu-N4-dB1"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="44L-Xk-CPw"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="cSA-0T-F6A" secondAttribute="trailing" constant="16" id="57G-gQ-E9f"/>
+                                                                    <constraint firstItem="cSA-0T-F6A" firstAttribute="leading" secondItem="foF-lk-uaV" secondAttribute="leading" constant="16" id="Rrl-3Q-ize"/>
+                                                                    <constraint firstItem="cSA-0T-F6A" firstAttribute="centerY" secondItem="foF-lk-uaV" secondAttribute="centerY" id="UaE-9K-BKM"/>
+                                                                    <constraint firstItem="cSA-0T-F6A" firstAttribute="centerX" secondItem="foF-lk-uaV" secondAttribute="centerX" id="pyU-e4-egy"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gbg-Bs-qeL">
+                                                                <rect key="frame" x="0.0" y="62.5" width="414" height="62.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFn-HE-Xpd" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="3.5" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="12h-ra-684"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="ix3-D2-ykK"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="eFn-HE-Xpd" firstAttribute="centerX" secondItem="Gbg-Bs-qeL" secondAttribute="centerX" id="1sj-0b-6F5"/>
+                                                                    <constraint firstItem="eFn-HE-Xpd" firstAttribute="leading" secondItem="Gbg-Bs-qeL" secondAttribute="leading" constant="16" id="OBD-qY-tWh"/>
+                                                                    <constraint firstItem="eFn-HE-Xpd" firstAttribute="centerY" secondItem="Gbg-Bs-qeL" secondAttribute="centerY" id="YzX-3m-MBL"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="eFn-HE-Xpd" secondAttribute="trailing" constant="16" id="mem-Da-lUD"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hC3-KK-TUp">
+                                                                <rect key="frame" x="0.0" y="125" width="414" height="62.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Diagnosis" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lE9-NG-S5p" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="3.5" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.9529411793" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="9ja-jT-S01"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="CAA-Uq-hJc"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="lE9-NG-S5p" firstAttribute="centerY" secondItem="hC3-KK-TUp" secondAttribute="centerY" id="I4z-jw-mtp"/>
+                                                                    <constraint firstItem="lE9-NG-S5p" firstAttribute="leading" secondItem="hC3-KK-TUp" secondAttribute="leading" constant="16" id="OPw-F8-yc7"/>
+                                                                    <constraint firstItem="lE9-NG-S5p" firstAttribute="centerX" secondItem="hC3-KK-TUp" secondAttribute="centerX" id="SRE-SE-U6K"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="lE9-NG-S5p" secondAttribute="trailing" constant="16" id="b70-JF-Va7"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f17-9j-pq9">
+                                                                <rect key="frame" x="0.0" y="187.5" width="414" height="62.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="No of Pills/ Units" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-CJ-u9h" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="3.5" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="vqJ-RD-Seb"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="5hY-db-nu4"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="5yj-CJ-u9h" secondAttribute="trailing" constant="16" id="75R-J1-UJX"/>
+                                                                    <constraint firstItem="5yj-CJ-u9h" firstAttribute="centerX" secondItem="f17-9j-pq9" secondAttribute="centerX" id="Lu3-FR-UOy"/>
+                                                                    <constraint firstItem="5yj-CJ-u9h" firstAttribute="centerY" secondItem="f17-9j-pq9" secondAttribute="centerY" id="pmj-bd-vh1"/>
+                                                                    <constraint firstItem="5yj-CJ-u9h" firstAttribute="leading" secondItem="f17-9j-pq9" secondAttribute="leading" constant="16" id="rj4-MH-w9j"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="hC3-KK-TUp" secondAttribute="trailing" id="3su-dx-nBx"/>
+                                                            <constraint firstItem="Gbg-Bs-qeL" firstAttribute="leading" secondItem="iSG-ev-AlM" secondAttribute="leading" id="5AP-Eb-DYT"/>
+                                                            <constraint firstItem="f17-9j-pq9" firstAttribute="top" secondItem="hC3-KK-TUp" secondAttribute="bottom" id="6KY-BO-g1g"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Gbg-Bs-qeL" secondAttribute="trailing" id="BMC-lJ-tfe"/>
+                                                            <constraint firstItem="foF-lk-uaV" firstAttribute="top" secondItem="iSG-ev-AlM" secondAttribute="top" id="CfD-JR-nlp"/>
+                                                            <constraint firstAttribute="bottom" secondItem="f17-9j-pq9" secondAttribute="bottom" id="Gud-uY-Wid"/>
+                                                            <constraint firstItem="hC3-KK-TUp" firstAttribute="leading" secondItem="iSG-ev-AlM" secondAttribute="leading" id="NQc-dg-bOT"/>
+                                                            <constraint firstItem="f17-9j-pq9" firstAttribute="leading" secondItem="iSG-ev-AlM" secondAttribute="leading" id="T6e-NJ-gWi"/>
+                                                            <constraint firstItem="foF-lk-uaV" firstAttribute="leading" secondItem="iSG-ev-AlM" secondAttribute="leading" id="Z76-yU-9Nc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="f17-9j-pq9" secondAttribute="trailing" id="kab-22-nep"/>
+                                                            <constraint firstAttribute="trailing" secondItem="foF-lk-uaV" secondAttribute="trailing" id="ol2-VY-Lcz"/>
+                                                            <constraint firstAttribute="height" constant="250" id="pkU-D9-s3Q"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sg7-BV-aZG">
+                                                        <rect key="frame" x="0.0" y="348" width="414" height="450"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a35-zM-5LP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-S4-tEk" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="4" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="pIY-Rs-821"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="o5d-tH-pmZ"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="QfL-S4-tEk" firstAttribute="centerX" secondItem="a35-zM-5LP" secondAttribute="centerX" id="1ul-bR-RVT"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="QfL-S4-tEk" secondAttribute="trailing" constant="16" id="75n-p1-2rz"/>
+                                                                    <constraint firstItem="QfL-S4-tEk" firstAttribute="leading" secondItem="a35-zM-5LP" secondAttribute="leading" constant="16" id="MQP-r1-7ld"/>
+                                                                    <constraint firstItem="QfL-S4-tEk" firstAttribute="centerY" secondItem="a35-zM-5LP" secondAttribute="centerY" id="P56-U5-Gen"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wg-bE-iqv">
+                                                                <rect key="frame" x="0.0" y="64.5" width="414" height="64"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine Routine" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I7O-qj-k9y" customClass="JRDropDown">
+                                                                        <rect key="frame" x="16" y="4" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="9j7-h9-71i"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="N7i-cL-yAh"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="I7O-qj-k9y" secondAttribute="trailing" constant="16" id="Pb2-P2-KUh"/>
+                                                                    <constraint firstItem="I7O-qj-k9y" firstAttribute="leading" secondItem="4Wg-bE-iqv" secondAttribute="leading" constant="16" id="cfm-la-27f"/>
+                                                                    <constraint firstItem="I7O-qj-k9y" firstAttribute="centerX" secondItem="4Wg-bE-iqv" secondAttribute="centerX" id="pC0-Ch-YiJ"/>
+                                                                    <constraint firstItem="I7O-qj-k9y" firstAttribute="centerY" secondItem="4Wg-bE-iqv" secondAttribute="centerY" id="uxf-qr-6Nx"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCK-Ss-g5U">
+                                                                <rect key="frame" x="0.0" y="128.5" width="414" height="64.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remind me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="scF-IW-K4V" customClass="JRDropDown">
+                                                                        <rect key="frame" x="16" y="4" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.9529411793" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="H6H-Mg-Fe3"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="ZGA-HQ-XBU"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="scF-IW-K4V" secondAttribute="trailing" constant="16" id="CI3-bH-f3D"/>
+                                                                    <constraint firstItem="scF-IW-K4V" firstAttribute="centerX" secondItem="cCK-Ss-g5U" secondAttribute="centerX" id="HKM-mh-OUu"/>
+                                                                    <constraint firstItem="scF-IW-K4V" firstAttribute="centerY" secondItem="cCK-Ss-g5U" secondAttribute="centerY" id="iHL-J3-Rx0"/>
+                                                                    <constraint firstItem="scF-IW-K4V" firstAttribute="leading" secondItem="cCK-Ss-g5U" secondAttribute="leading" constant="16" id="mIv-r4-zww"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1Q-bu-txV">
+                                                                <rect key="frame" x="0.0" y="193" width="414" height="64"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dose 1 at" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-iz-lTE" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="4" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="vBf-51-cW7"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="kGx-eq-1Wy"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="Qt8-iz-lTE" secondAttribute="trailing" constant="16" id="Dp7-j2-9c8"/>
+                                                                    <constraint firstItem="Qt8-iz-lTE" firstAttribute="centerY" secondItem="m1Q-bu-txV" secondAttribute="centerY" id="ZNV-JH-c50"/>
+                                                                    <constraint firstItem="Qt8-iz-lTE" firstAttribute="leading" secondItem="m1Q-bu-txV" secondAttribute="leading" constant="16" id="d2r-uU-oWs"/>
+                                                                    <constraint firstItem="Qt8-iz-lTE" firstAttribute="centerX" secondItem="m1Q-bu-txV" secondAttribute="centerX" id="fw3-MY-ye4"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEn-2b-iB5">
+                                                                <rect key="frame" x="0.0" y="257" width="414" height="64.5"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dose 2 at" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-iC-Zdd" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="4.5" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="dPU-7n-UaG"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="Afv-Zg-ubp"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="LcH-iC-Zdd" firstAttribute="centerX" secondItem="qEn-2b-iB5" secondAttribute="centerX" id="Nj6-JI-Ocb"/>
+                                                                    <constraint firstItem="LcH-iC-Zdd" firstAttribute="leading" secondItem="qEn-2b-iB5" secondAttribute="leading" constant="16" id="TSy-aM-Z5a"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="LcH-iC-Zdd" secondAttribute="trailing" constant="16" id="nqf-4i-Giq"/>
+                                                                    <constraint firstItem="LcH-iC-Zdd" firstAttribute="centerY" secondItem="qEn-2b-iB5" secondAttribute="centerY" id="v5O-E1-1Hr"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUq-9P-W1k">
+                                                                <rect key="frame" x="0.0" y="321.5" width="414" height="64"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dose 3 at" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7y-pk-Gui" customClass="TextFieldWithPadding" customModule="Medicine_Remainder" customModuleProvider="target">
+                                                                        <rect key="frame" x="16" y="4" width="382" height="56"/>
+                                                                        <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="56" id="uoZ-zc-qcB"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="DU7-yg-n8z" id="Buu-w7-Ebx"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="W7y-pk-Gui" firstAttribute="centerY" secondItem="VUq-9P-W1k" secondAttribute="centerY" id="DwZ-2J-V1Y"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="W7y-pk-Gui" secondAttribute="trailing" constant="16" id="GAB-Rk-C6u"/>
+                                                                    <constraint firstItem="W7y-pk-Gui" firstAttribute="leading" secondItem="VUq-9P-W1k" secondAttribute="leading" constant="16" id="Ia3-CV-VlZ"/>
+                                                                    <constraint firstItem="W7y-pk-Gui" firstAttribute="centerX" secondItem="VUq-9P-W1k" secondAttribute="centerX" id="dZx-4U-RVQ"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5V-R6-IyA">
+                                                                <rect key="frame" x="0.0" y="385.5" width="414" height="64.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUH-ll-bQq">
+                                                                        <rect key="frame" x="16" y="8.5" width="382" height="48"/>
+                                                                        <color key="backgroundColor" red="0.60784316059999999" green="0.1294117719" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="48" id="jD8-yz-iu3"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                        <state key="normal" title="Add Reminder">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="SUH-ll-bQq" firstAttribute="centerY" secondItem="G5V-R6-IyA" secondAttribute="centerY" id="0Bv-j4-fKI"/>
+                                                                    <constraint firstItem="SUH-ll-bQq" firstAttribute="leading" secondItem="G5V-R6-IyA" secondAttribute="leading" constant="16" id="5VI-Ra-1jB"/>
+                                                                    <constraint firstItem="SUH-ll-bQq" firstAttribute="centerX" secondItem="G5V-R6-IyA" secondAttribute="centerX" id="g6F-At-q7k"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="SUH-ll-bQq" secondAttribute="trailing" constant="16" id="pa9-7a-Fqk"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="4Wg-bE-iqv" secondAttribute="trailing" id="1Ux-CE-vOj"/>
+                                                            <constraint firstItem="4Wg-bE-iqv" firstAttribute="leading" secondItem="sg7-BV-aZG" secondAttribute="leading" id="4DW-Pz-VTW"/>
+                                                            <constraint firstAttribute="trailing" secondItem="G5V-R6-IyA" secondAttribute="trailing" id="ABF-Wi-rT9"/>
+                                                            <constraint firstAttribute="trailing" secondItem="m1Q-bu-txV" secondAttribute="trailing" id="I5S-zP-Ise"/>
+                                                            <constraint firstItem="m1Q-bu-txV" firstAttribute="leading" secondItem="sg7-BV-aZG" secondAttribute="leading" id="JTr-TY-PbU"/>
+                                                            <constraint firstItem="a35-zM-5LP" firstAttribute="leading" secondItem="sg7-BV-aZG" secondAttribute="leading" id="Rfq-9N-V9A"/>
+                                                            <constraint firstAttribute="trailing" secondItem="a35-zM-5LP" secondAttribute="trailing" id="RhR-Dq-aF4"/>
+                                                            <constraint firstAttribute="height" constant="450" id="Ud4-If-jfL"/>
+                                                            <constraint firstItem="a35-zM-5LP" firstAttribute="top" secondItem="sg7-BV-aZG" secondAttribute="top" id="cAg-MA-K6c"/>
+                                                            <constraint firstAttribute="bottom" secondItem="G5V-R6-IyA" secondAttribute="bottom" id="dvq-xE-kfp"/>
+                                                            <constraint firstAttribute="trailing" secondItem="cCK-Ss-g5U" secondAttribute="trailing" id="flP-B2-q28"/>
+                                                            <constraint firstItem="cCK-Ss-g5U" firstAttribute="leading" secondItem="sg7-BV-aZG" secondAttribute="leading" id="jVX-S8-AzS"/>
+                                                            <constraint firstItem="G5V-R6-IyA" firstAttribute="leading" secondItem="sg7-BV-aZG" secondAttribute="leading" id="kRG-qV-vE7"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cZ-dD-6Ua">
+                                                        <rect key="frame" x="16" y="316" width="177.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="sXJ-Iz-dox"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="546-qe-29O"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="iSG-ev-AlM" firstAttribute="leading" secondItem="546-qe-29O" secondAttribute="leading" id="5mw-gs-Rvk"/>
+                                                    <constraint firstItem="sg7-BV-aZG" firstAttribute="trailing" secondItem="546-qe-29O" secondAttribute="trailing" id="Anx-nn-FQp"/>
+                                                    <constraint firstItem="YpI-di-hVc" firstAttribute="top" secondItem="546-qe-29O" secondAttribute="top" constant="10" id="Kee-f9-Cww"/>
+                                                    <constraint firstItem="YpI-di-hVc" firstAttribute="leading" secondItem="546-qe-29O" secondAttribute="leading" constant="16" id="SyP-wy-JBB"/>
+                                                    <constraint firstItem="6cZ-dD-6Ua" firstAttribute="leading" secondItem="546-qe-29O" secondAttribute="leading" constant="16" id="Tvb-9V-3fu"/>
+                                                    <constraint firstItem="iSG-ev-AlM" firstAttribute="trailing" secondItem="546-qe-29O" secondAttribute="trailing" id="XTL-m3-z4P"/>
+                                                    <constraint firstItem="iSG-ev-AlM" firstAttribute="top" secondItem="YpI-di-hVc" secondAttribute="bottom" constant="12" id="YQV-8J-drH"/>
+                                                    <constraint firstItem="sg7-BV-aZG" firstAttribute="top" secondItem="6cZ-dD-6Ua" secondAttribute="bottom" constant="12" id="eEz-fY-YIA"/>
+                                                    <constraint firstItem="sg7-BV-aZG" firstAttribute="leading" secondItem="546-qe-29O" secondAttribute="leading" id="naF-aJ-g4O"/>
+                                                    <constraint firstItem="6cZ-dD-6Ua" firstAttribute="top" secondItem="iSG-ev-AlM" secondAttribute="bottom" constant="24" id="tEI-ty-MsS"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="406" id="37W-ky-DRo"/>
+                                            <constraint firstAttribute="height" constant="900" id="NLg-ip-gVo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zem-U9-jTf" firstAttribute="top" secondItem="piX-BA-ZjP" secondAttribute="top" id="GTg-PB-I9S"/>
+                                    <constraint firstAttribute="bottom" secondItem="zem-U9-jTf" secondAttribute="bottom" id="SHe-tA-1sd"/>
+                                    <constraint firstAttribute="height" constant="900" id="erk-fM-6dG"/>
+                                    <constraint firstAttribute="trailing" secondItem="zem-U9-jTf" secondAttribute="trailing" id="iTj-T3-1Pj"/>
+                                    <constraint firstItem="zem-U9-jTf" firstAttribute="leading" secondItem="piX-BA-ZjP" secondAttribute="leading" id="ioa-R4-cas"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PFm-wL-aMr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="piX-BA-ZjP" firstAttribute="trailing" secondItem="eIp-ie-SwT" secondAttribute="trailing" id="NcM-JD-4Ih"/>
+                            <constraint firstItem="piX-BA-ZjP" firstAttribute="top" secondItem="eIp-ie-SwT" secondAttribute="top" id="Qm0-1f-Sn0"/>
+                            <constraint firstItem="piX-BA-ZjP" firstAttribute="leading" secondItem="eIp-ie-SwT" secondAttribute="leading" id="S9n-yW-y8n"/>
+                            <constraint firstItem="zem-U9-jTf" firstAttribute="width" secondItem="eIp-ie-SwT" secondAttribute="width" multiplier="0.980676" id="lNp-NM-5Zz"/>
+                            <constraint firstItem="piX-BA-ZjP" firstAttribute="bottom" secondItem="eIp-ie-SwT" secondAttribute="bottom" id="q8c-3T-SiH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Medicine Remainder" id="ZTR-Si-WlQ"/>
+                    <size key="freeformSize" width="414" height="900"/>
+                    <connections>
+                        <outlet property="datePickerTextField" destination="QfL-S4-tEk" id="wdk-1v-fdI"/>
+                        <outlet property="diagnosisTextField" destination="lE9-NG-S5p" id="foo-Tx-jgM"/>
+                        <outlet property="dose1TextField" destination="Qt8-iz-lTE" id="kCF-d9-zmK"/>
+                        <outlet property="dose2BgView" destination="qEn-2b-iB5" id="dtI-c1-rLx"/>
+                        <outlet property="dose2TextField" destination="LcH-iC-Zdd" id="6bz-5K-mzy"/>
+                        <outlet property="dose3BgView" destination="VUq-9P-W1k" id="k7T-Of-W3L"/>
+                        <outlet property="dose3TextField" destination="W7y-pk-Gui" id="D8p-e3-5c0"/>
+                        <outlet property="medicineNameTextField" destination="eFn-HE-Xpd" id="lG2-hg-y25"/>
+                        <outlet property="medicineRoutineTextField" destination="I7O-qj-k9y" id="FIf-4h-oVy"/>
+                        <outlet property="pillCountTextField" destination="5yj-CJ-u9h" id="6H3-67-GdY"/>
+                        <outlet property="remindMeTextField" destination="scF-IW-K4V" id="Aed-Yc-k9e"/>
+                        <outlet property="reminderStackView" destination="sg7-BV-aZG" id="sb0-VE-PRA"/>
+                        <outlet property="reminderStackViewHeightConstraint" destination="Ud4-If-jfL" id="Kd9-1v-B8v"/>
+                        <outlet property="selectMemberTextField" destination="cSA-0T-F6A" id="EZx-iX-6mP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eoh-dL-Sf6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3544.9275362318845" y="81.696428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AUG-8P-VFN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y2t-QD-WHj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MJ0-Zk-Ufj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.60784316059999999" green="0.1294117719" blue="0.21960783" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xf6-LV-FAc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ggp-rI-hOL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1839.1304347826087" y="81.696428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add" width="128" height="128"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
