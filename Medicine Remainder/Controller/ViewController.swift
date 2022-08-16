@@ -14,42 +14,8 @@ class ViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     
     var selectedIndexPath: Int!
-//    var users = [Member]()
     var users: User!
     var members = [Member]()
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "Edit", handler: { (_) in
-                var result = self.retrieveAllObjects()
-                var member = result[self.selectedIndexPath]
-                
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "addRemainder") as? AddRemainderViewController else { return }
-                vc.navigationItem.largeTitleDisplayMode = .never
-                vc.editMemberName = member.memberName
-                vc.editMedicineName = member.medicineName
-                vc.editDoseTimings = member.doseTimings
-                vc.editSchedule = member.schedule
-                vc.editDiagnosis = member.diagnosis
-                vc.editRemindMe = member.remindme
-                vc.editStartDate = member.startDate
-//                vc.editUsers = self.users
-                vc.userIndex = self.selectedIndexPath
-                vc.isEdit = true
-                vc.reload = {
-                    self.reminderTableView.reloadData()
-                }
-                self.navigationController?.pushViewController(vc, animated: true)
-            }),
-            UIAction(title: "Delete", attributes: .destructive, handler: { (_) in
-//                self.users.remove(at: self.selectedIndexPath)
-//                self.saveAllObjects(allObjects: self.users)
-                self.reminderTableView.reloadData()
-            })
-        ]
-    }
-    var demoMenu: UIMenu {
-        return UIMenu(image: nil, identifier: nil, options: [], children: menuItems)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +25,7 @@ class ViewController: UIViewController {
         
         members = retrieveAllObjects()
         users = User.instance(members: members)
-//        configureTableView()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-////        self.users = retrieveAllObjects()
-//        configureTableView()
-//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -91,12 +50,42 @@ class ViewController: UIViewController {
           let encoder = JSONEncoder()
           if let encoded = try? encoder.encode(allObjects){
              UserDefaults.standard.set(encoded, forKey: "user")
+              UserDefaults.standard.synchronize()
           }
      }
     
 //    func reminderIndex(index: Int) {
 //        self.users.remove(at: index)
 //    }
+    
+    func editReminder(indexPath: Int) {
+        var result = self.retrieveAllObjects()
+        var member = result[indexPath]
+        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "addRemainder") as? AddRemainderViewController else { return }
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.editMemberName = member.memberName
+        vc.editMedicineName = member.medicineName
+        vc.editDoseTimings = member.doseTimings
+        vc.editSchedule = member.schedule
+        vc.editDiagnosis = member.diagnosis
+        vc.editRemindMe = member.remindme
+        vc.editStartDate = member.startDate
+        vc.editUsers = self.members
+        vc.userIndex = self.selectedIndexPath
+        vc.isEdit = true
+        vc.reload = {
+            self.reminderTableView.reloadData()
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func deleteReminder(indexPath: Int) {
+        self.members.remove(at: indexPath)
+        self.saveAllObjects(allObjects: self.members)
+        configureTableView()
+//        self.reminderTableView.reloadData()
+    }
 
     @IBAction func addReminderButtonTapped(_ sender: UIButton) {
 
@@ -107,8 +96,6 @@ class ViewController: UIViewController {
                 let member = Member(memberName: memberName, medicineName: medicineName, doseTimings: doseTimings, schedule: schedule, diagnosis: diagnosis, startDate: startDate, remindme: remindMe)
                 self.members.append(member)
                 self.configureTableView()
-//                User.instance(members: self.members)
-//                self.users.append(new)
                 self.saveAllObjects(allObjects: self.members)
 //                self.users = self.retrieveAllObjects()
 //                if isEdit {
@@ -123,9 +110,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        return users.count
-    //    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.sections[section].rows.count
     }
@@ -140,9 +124,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 140
-        }
         return 140
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("*******\(indexPath)")
     }
 }

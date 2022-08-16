@@ -16,12 +16,23 @@ class ReminderTableViewCell: BaseCell {
     @IBOutlet weak var schedule: UILabel!
     @IBOutlet weak var editButton: UIButton!
     
-    override class func awakeFromNib() {
-        super.awakeFromNib()
+    var menuItems: [UIAction] {
+        return [
+            UIAction(title: "Edit", handler: { (_) in
+            }),
+            UIAction(title: "Delete", attributes: .destructive, handler: { (_) in
+                print("*******\(self.indexPath.row)")
+                self.owner.deleteReminder(indexPath: self.indexPath.row)
+                
+            })
+        ]
+    }
+    var demoMenu: UIMenu {
+        return UIMenu(image: nil, identifier: nil, options: [], children: menuItems)
     }
     
-    @IBAction func editButtonTapped(_ sender: UIButton) {
-        
+    override class func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     override func layoutSubviews() {
@@ -32,11 +43,16 @@ class ReminderTableViewCell: BaseCell {
     override func configureCellFor(row: UserRow, owner: ViewController, indexPath: IndexPath) {
         super.configureCellFor(row: row, owner: owner, indexPath: indexPath)
         guard let row = row as? ReminderRow else { return }
-        print("*****\(row.member)")
+        print("*****\(indexPath)")
         memberName.text = row.member.memberName
         medicineName.text = row.member.medicineName
         doseTimings.text = row.member.doseTimings
         schedule.text = row.member.schedule
         pillImageView.image = UIImage(named: "capsule")
+        editButton.menu = demoMenu
+        editButton.showsMenuAsPrimaryAction = true
+    }
+    @IBAction func editButtonTapped(_ sender: Any) {
+        
     }
 }

@@ -86,7 +86,7 @@
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" image="menu"/>
                                                                     <connections>
-                                                                        <action selector="editButtonTapped:" destination="OkI-Qp-6oX" eventType="touchUpInside" id="rKv-2q-4Bh"/>
+                                                                        <action selector="editButtonTapped:" destination="OkI-Qp-6oX" eventType="touchUpInside" id="hJW-s4-ISI"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
