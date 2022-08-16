@@ -40,11 +40,31 @@ class AddRemainderViewController: UIViewController {
     let timePickerForDose1 = UIDatePicker()
     let timePickerForDose2 = UIDatePicker()
     let timePickerForDose3 = UIDatePicker()
+    let center = UNUserNotificationCenter.current()
     
     var pickerView1 = UIPickerView()
     var pickerView2 = UIPickerView()
     var pickerView3 = UIPickerView()
+    var date1 = ""
+    var date2 = ""
+    var date3 = ""
+    var newTime1 = ""
+    var newTime2 = ""
+    var newTime3 = ""
     
+    var editMemberName: String!
+    var editMedicineName: String!
+    var editDoseTimings: String!
+    var editSchedule: String!
+    var editDiagnosis: String!
+    var editRemindMe: String!
+    var editStartDate: String!
+    var editUsers: [Member]!
+    var userIndex: Int!
+    var isEdit: Bool = false
+    var reload: (() -> Void)!
+    
+    public var completion: ((String, String, String, String, String, String, String, Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,63 +74,22 @@ class AddRemainderViewController: UIViewController {
         self.datePickerTextField.datePicker(target: self,
                                   doneAction: #selector(doneAction),
                                   cancelAction: #selector(cancelAction),
-                                            datePickerMode: .date)
+                                  datePickerMode: .date)
 
         createFloatingLabel()
-        
-        selectMemberTextField.optionArray = ["Tony Stark","Peter Parker","Steve Rogers", "Bruce Banner"]
-        selectMemberTextField.didSelect{(selectedText , index ,id) in
-            self.selectMemberTextField.text = "\(selectedText)"
-        }
-        selectMemberTextField.arrowSize = 10
-        selectMemberTextField.arrowColor = .black
-        selectMemberTextField.checkMarkEnabled = false
-        selectMemberTextField.selectedRowColor = .white
-        
-        medicineRoutineTextField.optionArray = ["Daily", "Weekly"]
-        medicineRoutineTextField.didSelect{(selectedText , index ,id) in
-            self.medicineRoutineTextField.text = "\(selectedText)"
-        }
-        medicineRoutineTextField.arrowSize = 10
-        medicineRoutineTextField.arrowColor = .black
-        medicineRoutineTextField.checkMarkEnabled = false
-        medicineRoutineTextField.selectedRowColor = .white
-        
-        remindMeTextField.optionArray = ["1 time a day", "2 times a day", "3 times a day"]
-        remindMeTextField.didSelect{(selectedText , index ,id) in
-            self.remindMeTextField.text = "\(selectedText)"
-            if self.remindMeTextField.text == "1 time a day" {
-                self.dose2BgView.isHidden = true
-                self.dose3BgView.isHidden = true
-                self.reminderStackViewHeightConstraint.constant = 340
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.layoutIfNeeded()
-                })
-            } else if self.remindMeTextField.text == "2 times a day" {
-                self.dose2BgView.isHidden = false
-                self.dose3BgView.isHidden = true
-                self.reminderStackViewHeightConstraint.constant = 396
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.layoutIfNeeded()
-                })
-            } else {
-                self.reminderStackViewHeightConstraint.constant = 450
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.layoutIfNeeded()
-                })
-                self.dose2BgView.isHidden = false
-                self.dose3BgView.isHidden = false
-            }
-        }
-        remindMeTextField.arrowSize = 10
-        remindMeTextField.arrowColor = .black
-        remindMeTextField.checkMarkEnabled = false
-        remindMeTextField.selectedRowColor = .white
+        createDropDown()
+        setValuesToEdit()
         
         if let myImage = UIImage(named: "timer"){
             dose1TextField.withImage(image: myImage)
             dose2TextField.withImage(image: myImage)
             dose3TextField.withImage(image: myImage)
+        }
+        
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            if(!granted) {
+                print("Permission Denied")
+            }
         }
     }
     
@@ -126,10 +105,6 @@ class AddRemainderViewController: UIViewController {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             let dateString = dateFormatter.string(from: datePickerView.date)
             self.datePickerTextField.text = dateString
-            
-            print(datePickerView.date)
-            print(dateString)
-            
             self.datePickerTextField.resignFirstResponder()
         }
     }
@@ -139,19 +114,111 @@ class AddRemainderViewController: UIViewController {
         toolbar.sizeToFit()
         if textField.largeContentTitle! == "Dose 1 at" {
             let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed1))
-            toolbar.setItems([doneBtn], animated: true)
-            textField.inputView = timePickerForDose1
+            configureDatePicker(doneBtn: doneBtn, toolbar: toolbar, textField: textField, timePicker: timePickerForDose1)
         } else if textField.largeContentTitle! == "Dose 2 at" {
             let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed2))
-            toolbar.setItems([doneBtn], animated: true)
-            textField.inputView = timePickerForDose2
+            configureDatePicker(doneBtn: doneBtn, toolbar: toolbar, textField: textField, timePicker: timePickerForDose2)
         } else if textField.largeContentTitle! == "Dose 3 at" {
             let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed3))
-            toolbar.setItems([doneBtn], animated: true)
-            textField.inputView = timePickerForDose3
+            configureDatePicker(doneBtn: doneBtn, toolbar: toolbar, textField: textField, timePicker: timePickerForDose3)
         }
-        textField.inputAccessoryView = toolbar
         timePicker.datePickerMode = .countDownTimer
+    }
+    
+    func configureDatePicker(doneBtn: UIBarButtonItem,toolbar: UIToolbar, textField: UITextField, timePicker: UIDatePicker) {
+        toolbar.setItems([doneBtn], animated: true)
+        textField.inputView = timePicker
+        textField.inputAccessoryView = toolbar
+    }
+    
+    func createDropDown() {
+        selectMemberTextField.optionArray = ["Tony Stark","Peter Parker","Steve Rogers", "Bruce Banner", "Natasha"]
+        selectMemberTextField.didSelect{(selectedText , index ,id) in
+            self.selectMemberTextField.text = "\(selectedText)"
+        }
+        configureDropDown(textField: selectMemberTextField)
+        
+        medicineRoutineTextField.optionArray = ["Daily", "Weekly"]
+        medicineRoutineTextField.didSelect{(selectedText , index ,id) in
+            self.medicineRoutineTextField.text = "\(selectedText)"
+        }
+        configureDropDown(textField: medicineRoutineTextField)
+        
+        remindMeTextField.optionArray = ["1 time a day", "2 times a day", "3 times a day"]
+        remindMeTextField.didSelect{(selectedText , index ,id) in
+            self.remindMeTextField.text = "\(selectedText)"
+            self.updateDoseFields()
+        }
+        configureDropDown(textField: remindMeTextField)
+    }
+    
+    func configureDropDown(textField: DropDown) {
+        textField.arrowSize = 10
+        textField.arrowColor = .black
+        textField.checkMarkEnabled = false
+        textField.selectedRowColor = .white
+    }
+    
+    func setValuesToEdit() {
+        if isEdit {
+            selectMemberTextField.text = editMemberName
+            medicineRoutineTextField.text = editSchedule
+            diagnosisTextField.text = editDiagnosis
+            remindMeTextField.text = editRemindMe
+            datePickerTextField.text = editStartDate
+            self.updateDoseFields()
+
+            floatingPlaceHolder1.isHidden = false
+            floatingPlaceHolder1.text = selectMemberTextField.placeholder
+            
+            floatingPlaceHolder3.isHidden = false
+            floatingPlaceHolder3.text = diagnosisTextField.placeholder
+            
+            floatingPlaceHolder5.isHidden = false
+            floatingPlaceHolder5.text = datePickerTextField.placeholder
+            
+            floatingPlaceHolder6.isHidden = false
+            floatingPlaceHolder6.text = medicineRoutineTextField.placeholder
+            
+            floatingPlaceHolder7.isHidden = false
+            floatingPlaceHolder7.text = remindMeTextField.placeholder
+            
+            let splitTimes = editDoseTimings.components(separatedBy: " - ")
+            let medicines = editMedicineName.components(separatedBy: " - ")
+            
+            pillCountTextField.text = medicines[0]
+            floatingPlaceHolder4.isHidden = false
+            floatingPlaceHolder4.text = pillCountTextField.placeholder
+            
+            medicineNameTextField.text = medicines[1]
+            floatingPlaceHolder2.isHidden = false
+            floatingPlaceHolder2.text = medicineNameTextField.placeholder
+
+            if splitTimes.count == 1 {
+                dose1TextField.text! = splitTimes[0]
+                floatingPlaceHolder8.isHidden = false
+                floatingPlaceHolder8.text = dose1TextField.placeholder
+            }
+            if splitTimes.count == 2 {
+                dose1TextField.text! = splitTimes[0]
+                floatingPlaceHolder8.isHidden = false
+                floatingPlaceHolder8.text = dose1TextField.placeholder
+                dose2TextField.text! = splitTimes[1]
+                floatingPlaceHolder9.isHidden = false
+                floatingPlaceHolder9.text = dose2TextField.placeholder
+            }
+            if splitTimes.count == 3 {
+                dose1TextField.text! = splitTimes[0]
+                floatingPlaceHolder8.isHidden = false
+                floatingPlaceHolder8.text = dose1TextField.placeholder
+                dose2TextField.text! = splitTimes[1]
+                floatingPlaceHolder9.isHidden = false
+                floatingPlaceHolder9.text = dose2TextField.placeholder
+                dose3TextField.text! = splitTimes[2]
+                floatingPlaceHolder10.isHidden = false
+                floatingPlaceHolder10.text = dose3TextField.placeholder
+            }
+        }
     }
     
     @objc func donePressed1(sender: UITextField) {
@@ -159,6 +226,10 @@ class AddRemainderViewController: UIViewController {
         formatter.dateFormat = "HH:mma"
         let dateString = formatter.string(from: timePickerForDose1.date).lowercased()
         self.dose1TextField.text = dateString
+        self.newTime1 = dateString
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .minute, value: -5, to: timePickerForDose1.date)!
+        date1 = formatter.string(from: newDate).lowercased()
         self.view.endEditing(true)
     }
     
@@ -167,6 +238,10 @@ class AddRemainderViewController: UIViewController {
         formatter.dateFormat = "HH:mma"
         let dateString = formatter.string(from: timePickerForDose2.date).lowercased()
         self.dose2TextField.text = dateString
+        self.newTime2 = dateString
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .minute, value: -5, to: timePickerForDose2.date)!
+        date2 = formatter.string(from: newDate).lowercased()
         self.view.endEditing(true)
     }
     
@@ -175,7 +250,52 @@ class AddRemainderViewController: UIViewController {
         formatter.dateFormat = "HH:mma"
         let dateString = formatter.string(from: timePickerForDose3.date).lowercased()
         self.dose3TextField.text = dateString
+        self.newTime3 = dateString
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .minute, value: -5, to: timePickerForDose3.date)!
+        date3 = formatter.string(from: newDate).lowercased()
         self.view.endEditing(true)
+    }
+    
+    func doneActionForDoseTimings(timePicker: UIDatePicker, textField: UITextField) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mma"
+        let dateString = formatter.string(from: timePicker.date).lowercased()
+        textField.text = dateString
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .minute, value: -5, to: timePicker.date)!
+        date3 = formatter.string(from: newDate).lowercased()
+        self.view.endEditing(true)
+        
+        return dateString
+    }
+    
+    func updateDoseFields() {
+        if self.remindMeTextField.text == "1 time a day" {
+            self.dose2BgView.isHidden = true
+            self.dose3BgView.isHidden = true
+            self.reminderStackViewHeightConstraint.constant = 338
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            dose2TextField.text = ""
+            dose3TextField.text = ""
+        } else if self.remindMeTextField.text == "2 times a day" {
+            self.dose2BgView.isHidden = false
+            self.dose3BgView.isHidden = true
+            self.reminderStackViewHeightConstraint.constant = 392
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            dose3TextField.text = ""
+        } else {
+            self.reminderStackViewHeightConstraint.constant = 450
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            self.dose2BgView.isHidden = false
+            self.dose3BgView.isHidden = false
+        }
     }
     
     func createFloatingLabel() {
@@ -205,6 +325,84 @@ class AddRemainderViewController: UIViewController {
         floatingPlaceHolder.font = UIFont.systemFont(ofSize: 12)
         floatingPlaceHolder.textColor = UIColor(named: "floatingLabel")
         textField.addSubview(floatingPlaceHolder)
+    }
+    
+    func notification(memberName: String, medicineName: String, time1: String, time2: String, time3: String, startDate: String, interval: String) {
+        
+        center.delegate = self
+        
+        var doseTimings = [time1, time2, time3]
+        var notificationTimings = [newTime1, newTime2, newTime3]
+        
+        for (time,newTime) in zip(doseTimings,notificationTimings) {
+            if time != "" && newTime != "" {
+                let min = time[3...4]
+                let hour = time[0...1]
+                let day = startDate[0...1]
+                let month = startDate[3...4]
+                let year = startDate[6...9]
+                
+                var dateComponents = DateComponents()
+                dateComponents.year = Int(year)
+                dateComponents.month = Int(month)
+                dateComponents.day = Int(day)
+                if interval != "Daily" {
+                    dateComponents.weekday = formattedDate(dateString: startDate)
+                }
+                dateComponents.hour = Int(hour)
+                dateComponents.minute = Int(min)
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Medicine reminder"
+                content.body = " Hi \(memberName), Please take your \(medicineName) at \(newTime)"
+                content.sound = .default
+                
+                let randomIdentifier = UUID().uuidString
+                let request = UNNotificationRequest(identifier: randomIdentifier, content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) { error in
+                    if error != nil {
+                        print("something went wrong")
+                    }
+                }
+            }
+        }
+    }
+    
+    func formattedDate(dateString: String) -> Int
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatter.date(from:dateString)!
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
+        let weekday = components.weekday!
+        let finalDate = calendar.date(from:components)!
+        
+        return weekday
+    }
+    
+    @IBAction func addReminderPressed(_ sender: UIButton) {
+        notification(memberName: selectMemberTextField.text!, medicineName: medicineNameTextField.text!, time1: date1,time2: date2, time3: date3, startDate: datePickerTextField.text!, interval: medicineRoutineTextField.text!)
+        self.navigationController?.popViewController(animated: true)
+        var doseTimings = dose1TextField.text!
+        if dose2TextField.text! != "" {
+            doseTimings += " - \(dose2TextField.text!)"
+            if dose3TextField.text! != "" {
+                doseTimings += " - \(dose3TextField.text!)"
+            }
+        }
+        if isEdit{
+            editUsers[userIndex] = Member(memberName: selectMemberTextField.text!, medicineName:  "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings: doseTimings, schedule: medicineRoutineTextField.text!, diagnosis: diagnosisTextField.text!, startDate: datePickerTextField.text!, remindme: remindMeTextField.text!)
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(editUsers){
+                UserDefaults.standard.set(encoded, forKey: "user")
+            }
+            reload
+        }
+        completion?(selectMemberTextField.text!, "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings, medicineRoutineTextField.text!, diagnosisTextField.text!, datePickerTextField.text!, remindMeTextField.text!, isEdit)
     }
 }
 
@@ -263,32 +461,50 @@ extension AddRemainderViewController: UITextFieldDelegate {
         }
         return true
     }
-
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.selectMemberTextField {
             selectMemberTextField.showList()
             floatingPlaceHolder1.isHidden = false
             floatingPlaceHolder1.text = self.selectMemberTextField.placeholder
-        } else if textField == self.datePickerTextField {
+        }
+        if textField == self.medicineNameTextField {
+            floatingPlaceHolder2.isHidden = false
+            floatingPlaceHolder2.text = medicineNameTextField.placeholder
+        }
+        if textField == self.diagnosisTextField {
+            floatingPlaceHolder3.isHidden = false
+            floatingPlaceHolder3.text = diagnosisTextField.placeholder
+        }
+        if textField == self.pillCountTextField {
+            floatingPlaceHolder4.isHidden = false
+            floatingPlaceHolder4.text = pillCountTextField.placeholder
+        }
+        if textField == self.datePickerTextField {
             floatingPlaceHolder5.isHidden = false
             floatingPlaceHolder5.text = datePickerTextField.placeholder
-        } else if textField == self.medicineRoutineTextField {
+        }
+        if textField == self.medicineRoutineTextField {
             medicineRoutineTextField.showList()
             floatingPlaceHolder6.isHidden = false
             floatingPlaceHolder6.text = medicineRoutineTextField.placeholder
-        } else if textField == self.remindMeTextField {
+        }
+        if textField == self.remindMeTextField {
             remindMeTextField.showList()
             floatingPlaceHolder7.isHidden = false
             floatingPlaceHolder7.text = remindMeTextField.placeholder
-        } else if textField == self.dose1TextField {
+        }
+        if textField == self.dose1TextField {
             createDatePicker(textField: dose1TextField, timePicker: timePickerForDose1)
             floatingPlaceHolder8.isHidden = false
             floatingPlaceHolder8.text = dose1TextField.placeholder
-        } else if textField == self.dose2TextField {
+        }
+        if textField == self.dose2TextField {
             createDatePicker(textField: dose2TextField, timePicker: timePickerForDose2)
             floatingPlaceHolder9.isHidden = false
             floatingPlaceHolder9.text = dose2TextField.placeholder
-        } else if textField == self.dose3TextField {
+        }
+        if textField == self.dose3TextField {
             createDatePicker(textField: dose3TextField, timePicker: timePickerForDose3)
             floatingPlaceHolder10.isHidden = false
             floatingPlaceHolder10.text = dose3TextField.placeholder
@@ -399,5 +615,25 @@ extension UITextField {
         self.rightViewMode = .always
         self.rightView = mainView
     }
+}
+
+extension AddRemainderViewController: UNUserNotificationCenterDelegate {
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
+    }
+}
+
+extension String {
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
 }
