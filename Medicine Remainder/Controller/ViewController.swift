@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
         
-//        users = retrieveAllObjects()
+        members = retrieveAllObjects()
         users = User.instance(members: members)
 //        configureTableView()
     }
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
                 self.configureTableView()
 //                User.instance(members: self.members)
 //                self.users.append(new)
-//                self.saveAllObjects(allObjects: self.users)
+                self.saveAllObjects(allObjects: self.members)
 //                self.users = self.retrieveAllObjects()
 //                if isEdit {
 //                    self.users = self.retrieveAllObjects()
