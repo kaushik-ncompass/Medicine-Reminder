@@ -19,11 +19,10 @@ class ReminderTableViewCell: BaseCell {
     var menuItems: [UIAction] {
         return [
             UIAction(title: "Edit", handler: { (_) in
+                self.owner.editReminder(indexPath: self.indexPath.row)
             }),
             UIAction(title: "Delete", attributes: .destructive, handler: { (_) in
-                print("*******\(self.indexPath.row)")
                 self.owner.deleteReminder(indexPath: self.indexPath.row)
-                
             })
         ]
     }
@@ -43,7 +42,6 @@ class ReminderTableViewCell: BaseCell {
     override func configureCellFor(row: UserRow, owner: ViewController, indexPath: IndexPath) {
         super.configureCellFor(row: row, owner: owner, indexPath: indexPath)
         guard let row = row as? ReminderRow else { return }
-        print("*****\(indexPath)")
         memberName.text = row.member.memberName
         medicineName.text = row.member.medicineName
         doseTimings.text = row.member.doseTimings
@@ -51,8 +49,5 @@ class ReminderTableViewCell: BaseCell {
         pillImageView.image = UIImage(named: "capsule")
         editButton.menu = demoMenu
         editButton.showsMenuAsPrimaryAction = true
-    }
-    @IBAction func editButtonTapped(_ sender: Any) {
-        
     }
 }

@@ -96,7 +96,6 @@
 		B108F9B728A4BCD60051BC45 /* Medicine Remainder */ = {
 			isa = PBXGroup;
 			children = (
-				B1AEF94528ABADBC009B29B0 /* Cell */,
 				B108F9BA28A4BCD60051BC45 /* SceneDelegate.swift */,
 				B1DA464628A4E09500C97A97 /* Base.swift */,
 				B108F9B828A4BCD60051BC45 /* AppDelegate.swift */,
@@ -104,6 +103,7 @@
 				B108F9C628A4BCD70051BC45 /* Info.plist */,
 				B1AA2BF628A8C98A003BF4A8 /* Model */,
 				B153E16228A8DE8400718B4B /* View */,
+				B1AEF94528ABADBC009B29B0 /* Cell */,
 				B153E15D28A8DE4200718B4B /* Controller */,
 			);
 			path = "Medicine Remainder";

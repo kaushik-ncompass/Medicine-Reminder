@@ -43,10 +43,8 @@ class ReminderRow: UserRow {
 
 extension User {
     static func instance(members: [Member]) -> User {
-//        print("*****\(members)")
         var sections = [UserSection]()
         if members.count > 0 {
-//            print("***** inside if")
             sections.append(contentsOf: [
                 reminderSection(members: members)
             ])
@@ -57,10 +55,8 @@ extension User {
     static func reminderSection(members: [Member]) -> UserSection {
         var reminderRows = [UserRow]()
         members.forEach { member in
-            print("****** Reminder section \(member)")
             reminderRows.append(ReminderRow(reuseIdentifier: "ReminderTableViewCellId", member: member))
         }
-        print("****** Reminder Rows \(reminderRows)")
         return UserSection(rows: reminderRows)
     }
 }

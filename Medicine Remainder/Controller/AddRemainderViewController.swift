@@ -26,25 +26,23 @@ class AddRemainderViewController: UIViewController {
     @IBOutlet weak var dose2TextField: UITextField!
     @IBOutlet weak var dose3BgView: UIView!
     @IBOutlet weak var dose3TextField: UITextField!
+    @IBOutlet weak var addReminderButton: UIButton!
     
-    let floatingPlaceHolder1 = UILabel()
-    let floatingPlaceHolder2 = UILabel()
-    let floatingPlaceHolder3 = UILabel()
-    let floatingPlaceHolder4 = UILabel()
-    let floatingPlaceHolder5 = UILabel()
-    let floatingPlaceHolder6 = UILabel()
-    let floatingPlaceHolder7 = UILabel()
-    let floatingPlaceHolder8 = UILabel()
-    let floatingPlaceHolder9 = UILabel()
-    let floatingPlaceHolder10 = UILabel()
+    let selectMemberFloatingLabel = UILabel()
+    let medicineNameFloatingLabel = UILabel()
+    let diagnosisFloatingLabel = UILabel()
+    let pillCountFloatingLabel = UILabel()
+    let datePickerFloatingLabel = UILabel()
+    let medicineRoutineFloatingLabel = UILabel()
+    let remindMeFloatingLabel = UILabel()
+    let dose1FloatingLabel = UILabel()
+    let dose2FloatingLabel = UILabel()
+    let dose3FloatingLabel = UILabel()
     let timePickerForDose1 = UIDatePicker()
     let timePickerForDose2 = UIDatePicker()
     let timePickerForDose3 = UIDatePicker()
-    let center = UNUserNotificationCenter.current()
-    
-    var pickerView1 = UIPickerView()
-    var pickerView2 = UIPickerView()
-    var pickerView3 = UIPickerView()
+    let notificationCenter = UNUserNotificationCenter.current()
+
     var date1 = ""
     var date2 = ""
     var date3 = ""
@@ -86,7 +84,7 @@ class AddRemainderViewController: UIViewController {
             dose3TextField.withImage(image: myImage)
         }
         
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if(!granted) {
                 print("Permission Denied")
             }
@@ -168,55 +166,55 @@ class AddRemainderViewController: UIViewController {
             datePickerTextField.text = editStartDate
             self.updateDoseFields()
 
-            floatingPlaceHolder1.isHidden = false
-            floatingPlaceHolder1.text = selectMemberTextField.placeholder
+            selectMemberFloatingLabel.isHidden = false
+            selectMemberFloatingLabel.text = selectMemberTextField.placeholder
             
-            floatingPlaceHolder3.isHidden = false
-            floatingPlaceHolder3.text = diagnosisTextField.placeholder
+            diagnosisFloatingLabel.isHidden = false
+            diagnosisFloatingLabel.text = diagnosisTextField.placeholder
             
-            floatingPlaceHolder5.isHidden = false
-            floatingPlaceHolder5.text = datePickerTextField.placeholder
+            datePickerFloatingLabel.isHidden = false
+            datePickerFloatingLabel.text = datePickerTextField.placeholder
             
-            floatingPlaceHolder6.isHidden = false
-            floatingPlaceHolder6.text = medicineRoutineTextField.placeholder
+            medicineRoutineFloatingLabel.isHidden = false
+            medicineRoutineFloatingLabel.text = medicineRoutineTextField.placeholder
             
-            floatingPlaceHolder7.isHidden = false
-            floatingPlaceHolder7.text = remindMeTextField.placeholder
+            remindMeFloatingLabel.isHidden = false
+            remindMeFloatingLabel.text = remindMeTextField.placeholder
             
             let splitTimes = editDoseTimings.components(separatedBy: " - ")
             let medicines = editMedicineName.components(separatedBy: " - ")
             
             pillCountTextField.text = medicines[0]
-            floatingPlaceHolder4.isHidden = false
-            floatingPlaceHolder4.text = pillCountTextField.placeholder
+            pillCountFloatingLabel.isHidden = false
+            pillCountFloatingLabel.text = pillCountTextField.placeholder
             
             medicineNameTextField.text = medicines[1]
-            floatingPlaceHolder2.isHidden = false
-            floatingPlaceHolder2.text = medicineNameTextField.placeholder
+            medicineNameFloatingLabel.isHidden = false
+            medicineNameFloatingLabel.text = medicineNameTextField.placeholder
 
             if splitTimes.count == 1 {
                 dose1TextField.text! = splitTimes[0]
-                floatingPlaceHolder8.isHidden = false
-                floatingPlaceHolder8.text = dose1TextField.placeholder
+                dose1FloatingLabel.isHidden = false
+                dose1FloatingLabel.text = dose1TextField.placeholder
             }
             if splitTimes.count == 2 {
                 dose1TextField.text! = splitTimes[0]
-                floatingPlaceHolder8.isHidden = false
-                floatingPlaceHolder8.text = dose1TextField.placeholder
+                dose1FloatingLabel.isHidden = false
+                dose1FloatingLabel.text = dose1TextField.placeholder
                 dose2TextField.text! = splitTimes[1]
-                floatingPlaceHolder9.isHidden = false
-                floatingPlaceHolder9.text = dose2TextField.placeholder
+                dose2FloatingLabel.isHidden = false
+                dose2FloatingLabel.text = dose2TextField.placeholder
             }
             if splitTimes.count == 3 {
                 dose1TextField.text! = splitTimes[0]
-                floatingPlaceHolder8.isHidden = false
-                floatingPlaceHolder8.text = dose1TextField.placeholder
+                dose1FloatingLabel.isHidden = false
+                dose1FloatingLabel.text = dose1TextField.placeholder
                 dose2TextField.text! = splitTimes[1]
-                floatingPlaceHolder9.isHidden = false
-                floatingPlaceHolder9.text = dose2TextField.placeholder
+                dose2FloatingLabel.isHidden = false
+                dose2FloatingLabel.text = dose2TextField.placeholder
                 dose3TextField.text! = splitTimes[2]
-                floatingPlaceHolder10.isHidden = false
-                floatingPlaceHolder10.text = dose3TextField.placeholder
+                dose3FloatingLabel.isHidden = false
+                dose3FloatingLabel.text = dose3TextField.placeholder
             }
         }
     }
@@ -299,25 +297,25 @@ class AddRemainderViewController: UIViewController {
     }
     
     func createFloatingLabel() {
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder1, textField: selectMemberTextField)
+        customizeFloatingLabel(floatingPlaceHolder: selectMemberFloatingLabel, textField: selectMemberTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder2, textField: medicineNameTextField)
+        customizeFloatingLabel(floatingPlaceHolder: medicineNameFloatingLabel, textField: medicineNameTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder3, textField: diagnosisTextField)
+        customizeFloatingLabel(floatingPlaceHolder: diagnosisFloatingLabel, textField: diagnosisTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder4, textField: pillCountTextField)
+        customizeFloatingLabel(floatingPlaceHolder: pillCountFloatingLabel, textField: pillCountTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder5, textField: datePickerTextField)
+        customizeFloatingLabel(floatingPlaceHolder: datePickerFloatingLabel, textField: datePickerTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder6, textField: medicineRoutineTextField)
+        customizeFloatingLabel(floatingPlaceHolder: medicineRoutineFloatingLabel, textField: medicineRoutineTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder7, textField: remindMeTextField)
+        customizeFloatingLabel(floatingPlaceHolder: remindMeFloatingLabel, textField: remindMeTextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder8, textField: dose1TextField)
+        customizeFloatingLabel(floatingPlaceHolder: dose1FloatingLabel, textField: dose1TextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder9, textField: dose2TextField)
+        customizeFloatingLabel(floatingPlaceHolder: dose2FloatingLabel, textField: dose2TextField)
         
-        customizeFloatingLabel(floatingPlaceHolder: floatingPlaceHolder10, textField: dose3TextField)
+        customizeFloatingLabel(floatingPlaceHolder: dose3FloatingLabel, textField: dose3TextField)
     }
     
     func customizeFloatingLabel(floatingPlaceHolder: UILabel, textField: UITextField) {
@@ -329,10 +327,10 @@ class AddRemainderViewController: UIViewController {
     
     func notification(memberName: String, medicineName: String, time1: String, time2: String, time3: String, startDate: String, interval: String) {
         
-        center.delegate = self
+        notificationCenter.delegate = self
         
-        var doseTimings = [time1, time2, time3]
-        var notificationTimings = [newTime1, newTime2, newTime3]
+        let doseTimings = [time1, time2, time3]
+        let notificationTimings = [newTime1, newTime2, newTime3]
         
         for (time,newTime) in zip(doseTimings,notificationTimings) {
             if time != "" && newTime != "" {
@@ -379,7 +377,7 @@ class AddRemainderViewController: UIViewController {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
         let weekday = components.weekday!
-        let finalDate = calendar.date(from:components)!
+        _ = calendar.date(from:components)!
         
         return weekday
     }
@@ -407,7 +405,6 @@ class AddRemainderViewController: UIViewController {
 }
 
 extension AddRemainderViewController: UITextFieldDelegate {
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         
@@ -415,47 +412,47 @@ extension AddRemainderViewController: UITextFieldDelegate {
         {
             let text = (selectMemberTextField.text! as NSString).replacingCharacters(in: range, with: string)
             if !text.isEmpty{
-                floatingPlaceHolder1.isHidden = false
-                floatingPlaceHolder1.text = selectMemberTextField.placeholder
+                selectMemberFloatingLabel.isHidden = false
+                selectMemberFloatingLabel.text = selectMemberTextField.placeholder
             } else {
-                floatingPlaceHolder1.isHidden = true
+                selectMemberFloatingLabel.isHidden = true
                 self.selectMemberTextField.placeholder = "Select Member"
             }
         } else if textField == self.medicineNameTextField {
             let text = (medicineNameTextField.text! as NSString).replacingCharacters(in: range, with: string)
             if !text.isEmpty{
-                floatingPlaceHolder2.isHidden = false
-                floatingPlaceHolder2.text = medicineNameTextField.placeholder
+                medicineNameFloatingLabel.isHidden = false
+                medicineNameFloatingLabel.text = medicineNameTextField.placeholder
             } else {
-                floatingPlaceHolder2.isHidden = true
+                medicineNameFloatingLabel.isHidden = true
                 self.medicineNameTextField.placeholder = "Medicine Name"
             }
         } else if textField == self.diagnosisTextField {
             let text = (diagnosisTextField.text! as NSString).replacingCharacters(in: range, with: string)
             if !text.isEmpty{
-                floatingPlaceHolder3.isHidden = false
-                floatingPlaceHolder3.text = diagnosisTextField.placeholder
+                diagnosisFloatingLabel.isHidden = false
+                diagnosisFloatingLabel.text = diagnosisTextField.placeholder
             } else {
-                floatingPlaceHolder3.isHidden = true
+                diagnosisFloatingLabel.isHidden = true
                 self.diagnosisTextField.placeholder = "Diagnosis"
             }
         } else if textField == self.pillCountTextField {
             let text = (pillCountTextField.text! as NSString).replacingCharacters(in: range, with: string)
             if !text.isEmpty{
-                floatingPlaceHolder4.isHidden = false
-                floatingPlaceHolder4.text = pillCountTextField.placeholder
+                pillCountFloatingLabel.isHidden = false
+                pillCountFloatingLabel.text = pillCountTextField.placeholder
             } else {
-                floatingPlaceHolder4.isHidden = true
+                pillCountFloatingLabel.isHidden = true
                 self.pillCountTextField.placeholder = "No of Pills/ Units"
             }
         } else if textField == self.datePickerTextField {
             let text = (datePickerTextField.text! as NSString).replacingCharacters(in: range, with: string)
             if !text.isEmpty{
-                floatingPlaceHolder5.isHidden = false
-                floatingPlaceHolder5.text = datePickerTextField.placeholder
+                datePickerFloatingLabel.isHidden = false
+                datePickerFloatingLabel.text = datePickerTextField.placeholder
             }
             else {
-                floatingPlaceHolder5.isHidden = true
+                datePickerFloatingLabel.isHidden = true
                 self.datePickerTextField.placeholder = "Start Date"
             }
         }
@@ -465,49 +462,49 @@ extension AddRemainderViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.selectMemberTextField {
             selectMemberTextField.showList()
-            floatingPlaceHolder1.isHidden = false
-            floatingPlaceHolder1.text = self.selectMemberTextField.placeholder
+            selectMemberFloatingLabel.isHidden = false
+            selectMemberFloatingLabel.text = self.selectMemberTextField.placeholder
         }
         if textField == self.medicineNameTextField {
-            floatingPlaceHolder2.isHidden = false
-            floatingPlaceHolder2.text = medicineNameTextField.placeholder
+            medicineNameFloatingLabel.isHidden = false
+            medicineNameFloatingLabel.text = medicineNameTextField.placeholder
         }
         if textField == self.diagnosisTextField {
-            floatingPlaceHolder3.isHidden = false
-            floatingPlaceHolder3.text = diagnosisTextField.placeholder
+            diagnosisFloatingLabel.isHidden = false
+            diagnosisFloatingLabel.text = diagnosisTextField.placeholder
         }
         if textField == self.pillCountTextField {
-            floatingPlaceHolder4.isHidden = false
-            floatingPlaceHolder4.text = pillCountTextField.placeholder
+            pillCountFloatingLabel.isHidden = false
+            pillCountFloatingLabel.text = pillCountTextField.placeholder
         }
         if textField == self.datePickerTextField {
-            floatingPlaceHolder5.isHidden = false
-            floatingPlaceHolder5.text = datePickerTextField.placeholder
+            datePickerFloatingLabel.isHidden = false
+            datePickerFloatingLabel.text = datePickerTextField.placeholder
         }
         if textField == self.medicineRoutineTextField {
             medicineRoutineTextField.showList()
-            floatingPlaceHolder6.isHidden = false
-            floatingPlaceHolder6.text = medicineRoutineTextField.placeholder
+            medicineRoutineFloatingLabel.isHidden = false
+            medicineRoutineFloatingLabel.text = medicineRoutineTextField.placeholder
         }
         if textField == self.remindMeTextField {
             remindMeTextField.showList()
-            floatingPlaceHolder7.isHidden = false
-            floatingPlaceHolder7.text = remindMeTextField.placeholder
+            remindMeFloatingLabel.isHidden = false
+            remindMeFloatingLabel.text = remindMeTextField.placeholder
         }
         if textField == self.dose1TextField {
             createDatePicker(textField: dose1TextField, timePicker: timePickerForDose1)
-            floatingPlaceHolder8.isHidden = false
-            floatingPlaceHolder8.text = dose1TextField.placeholder
+            dose1FloatingLabel.isHidden = false
+            dose1FloatingLabel.text = dose1TextField.placeholder
         }
         if textField == self.dose2TextField {
             createDatePicker(textField: dose2TextField, timePicker: timePickerForDose2)
-            floatingPlaceHolder9.isHidden = false
-            floatingPlaceHolder9.text = dose2TextField.placeholder
+            dose2FloatingLabel.isHidden = false
+            dose2FloatingLabel.text = dose2TextField.placeholder
         }
         if textField == self.dose3TextField {
             createDatePicker(textField: dose3TextField, timePicker: timePickerForDose3)
-            floatingPlaceHolder10.isHidden = false
-            floatingPlaceHolder10.text = dose3TextField.placeholder
+            dose3FloatingLabel.isHidden = false
+            dose3FloatingLabel.text = dose3TextField.placeholder
         }
         return true
     }

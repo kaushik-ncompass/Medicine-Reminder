@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var selectedIndexPath: Int!
     var users: User!
     var members = [Member]()
+    var isEdit: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,15 @@ class ViewController: UIViewController {
         
         members = retrieveAllObjects()
         users = User.instance(members: members)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isEdit {
+            members = retrieveAllObjects()
+            configureTableView()
+            isEdit = false
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,13 +64,9 @@ class ViewController: UIViewController {
           }
      }
     
-//    func reminderIndex(index: Int) {
-//        self.users.remove(at: index)
-//    }
-    
     func editReminder(indexPath: Int) {
-        var result = self.retrieveAllObjects()
-        var member = result[indexPath]
+        let result = self.retrieveAllObjects()
+        let member = result[indexPath]
         
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "addRemainder") as? AddRemainderViewController else { return }
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -72,19 +78,19 @@ class ViewController: UIViewController {
         vc.editRemindMe = member.remindme
         vc.editStartDate = member.startDate
         vc.editUsers = self.members
-        vc.userIndex = self.selectedIndexPath
+        vc.userIndex = indexPath
         vc.isEdit = true
         vc.reload = {
             self.reminderTableView.reloadData()
         }
         self.navigationController?.pushViewController(vc, animated: true)
+        isEdit = true
     }
     
     func deleteReminder(indexPath: Int) {
         self.members.remove(at: indexPath)
         self.saveAllObjects(allObjects: self.members)
         configureTableView()
-//        self.reminderTableView.reloadData()
     }
 
     @IBAction func addReminderButtonTapped(_ sender: UIButton) {
@@ -97,12 +103,6 @@ class ViewController: UIViewController {
                 self.members.append(member)
                 self.configureTableView()
                 self.saveAllObjects(allObjects: self.members)
-//                self.users = self.retrieveAllObjects()
-//                if isEdit {
-//                    self.users = self.retrieveAllObjects()
-//                    print("*******\(self.users)")
-//                    self.reminderTableView.reloadData()
-//                }
             }
         }
         navigationController?.pushViewController(vc, animated: true)
@@ -116,7 +116,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return users.sections.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = users.sections[indexPath.section].rows[indexPath.row]
         let cell = reminderTableView.dequeueReusableCell(withIdentifier: "ReminderTableViewCellId", for: indexPath) as! ReminderTableViewCell
@@ -125,8 +124,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("*******\(indexPath)")
     }
 }
