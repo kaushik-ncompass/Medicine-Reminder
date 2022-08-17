@@ -35,6 +35,8 @@ class ViewController: UIViewController {
                     self.emptyStateView.isHidden = true
                     self.headerText.isHidden = false
                 })
+            } else {
+                self.headerText.isHidden = true
             }
         } else {
             self.headerText.isHidden = true
