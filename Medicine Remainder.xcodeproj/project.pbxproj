@@ -20,6 +20,7 @@
 		B1AEF94428ABAC67009B29B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEF94328ABAC67009B29B0 /* User.swift */; };
 		B1AEF94728ABADCE009B29B0 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEF94628ABADCE009B29B0 /* BaseCell.swift */; };
 		B1AEF94928ABADEC009B29B0 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEF94828ABADEC009B29B0 /* ReminderTableViewCell.swift */; };
+		B1D9E4BA28AD4B7E008D1ABB /* InAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9E4B928AD4B7E008D1ABB /* InAppNotification.swift */; };
 		B1DA464728A4E09500C97A97 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA464628A4E09500C97A97 /* Base.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		B1AEF94328ABAC67009B29B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B1AEF94628ABADCE009B29B0 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		B1AEF94828ABADEC009B29B0 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		B1D9E4B928AD4B7E008D1ABB /* InAppNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppNotification.swift; sourceTree = "<group>"; };
 		B1DA464628A4E09500C97A97 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				B153E16228A8DE8400718B4B /* View */,
 				B1AEF94528ABADBC009B29B0 /* Cell */,
 				B153E15D28A8DE4200718B4B /* Controller */,
+				B1D9E4B828AD4B35008D1ABB /* Support Files */,
 			);
 			path = "Medicine Remainder";
 			sourceTree = "<group>";
@@ -144,6 +147,14 @@
 				B1AEF94828ABADEC009B29B0 /* ReminderTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		B1D9E4B828AD4B35008D1ABB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1D9E4B928AD4B7E008D1ABB /* InAppNotification.swift */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 				B153E16128A8DE4200718B4B /* AddRemainderViewController.swift in Sources */,
 				B1DA464728A4E09500C97A97 /* Base.swift in Sources */,
 				B1AEF94928ABADEC009B29B0 /* ReminderTableViewCell.swift in Sources */,
+				B1D9E4BA28AD4B7E008D1ABB /* InAppNotification.swift in Sources */,
 				B1AEF94728ABADCE009B29B0 /* BaseCell.swift in Sources */,
 				B108F9B928A4BCD60051BC45 /* AppDelegate.swift in Sources */,
 				B108F9BB28A4BCD60051BC45 /* SceneDelegate.swift in Sources */,

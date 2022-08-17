@@ -147,6 +147,12 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVS-It-YNU">
                                 <rect key="frame" x="306" y="768" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RVS-It-YNU" secondAttribute="height" id="L3N-rL-VdT"/>
+                                    <constraint firstAttribute="height" constant="128" id="hCU-lO-2NQ">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="256"/>
+                                    </constraint>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="add"/>
                                 <connections>
@@ -160,7 +166,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="NZp-Ab-FID"/>
+                                            <constraint firstAttribute="height" constant="250" id="NZp-Ab-FID">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="550"/>
+                                            </constraint>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the button below to add a new reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfr-Kv-YCV">
@@ -168,12 +176,18 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMJ-bl-d9e">
                                         <rect key="frame" x="96.5" y="250" width="107.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" name="floatingLabel"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -184,7 +198,9 @@
                                     <constraint firstItem="Lfr-Kv-YCV" firstAttribute="centerX" secondItem="u86-Uk-5zg" secondAttribute="centerX" id="LyN-0J-Srt"/>
                                     <constraint firstAttribute="trailing" secondItem="ZiJ-XA-ysE" secondAttribute="trailing" id="OML-Kg-9Jp"/>
                                     <constraint firstAttribute="width" secondItem="u86-Uk-5zg" secondAttribute="height" id="YvU-Zi-UeY"/>
-                                    <constraint firstAttribute="height" constant="300" id="oVD-s9-Evv"/>
+                                    <constraint firstAttribute="height" constant="300" id="oVD-s9-Evv">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="600"/>
+                                    </constraint>
                                     <constraint firstItem="ZiJ-XA-ysE" firstAttribute="leading" secondItem="u86-Uk-5zg" secondAttribute="leading" id="vLI-f7-dAU"/>
                                     <constraint firstItem="PMJ-bl-d9e" firstAttribute="centerX" secondItem="u86-Uk-5zg" secondAttribute="centerX" id="wFF-Tx-PZG"/>
                                 </constraints>
@@ -194,7 +210,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zI3-4n-f5m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1wu-7m-NxJ"/>
-                            <constraint firstAttribute="trailing" secondItem="RVS-It-YNU" secondAttribute="trailing" constant="-20" id="31n-LS-Gze"/>
+                            <constraint firstAttribute="trailing" secondItem="RVS-It-YNU" secondAttribute="trailing" constant="-20" id="31n-LS-Gze">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-40"/>
+                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="RVS-It-YNU" secondAttribute="bottom" id="9lU-rd-iMs"/>
                             <constraint firstItem="iiL-hC-db2" firstAttribute="top" secondItem="zI3-4n-f5m" secondAttribute="top" constant="35" id="Clw-4G-MUI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iiL-hC-db2" secondAttribute="trailing" id="Lev-K2-1i4"/>

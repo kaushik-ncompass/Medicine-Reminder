@@ -59,8 +59,9 @@ class AddRemainderViewController: UIViewController {
     var editUsers: [Member]!
     var userIndex: Int!
     var isEdit: Bool = false
+    var editTimeStamp: String!
     
-    public var completion: ((String, String, String, String, String, String, String, Bool) -> Void)?
+    public var completion: ((String, String, String, String, String, String, String, String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -312,7 +313,11 @@ class AddRemainderViewController: UIViewController {
         textField.addSubview(floatingPlaceHolder)
     }
     
-    func notification(memberName: String, medicineName: String, time1: String, time2: String, time3: String, startDate: String, interval: String) {
+    func notification(memberName: String, medicineName: String, time1: String, time2: String, time3: String, startDate: String, interval: String, timeStamp: String) {
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequest) in
+                print("Requests: \(notificationRequest)")
+        }
         
         notificationCenter.delegate = self
         
@@ -344,8 +349,7 @@ class AddRemainderViewController: UIViewController {
                 content.body = " Hi \(memberName), Please take your \(medicineName) at \(newTime)"
                 content.sound = .default
                 
-                let randomIdentifier = UUID().uuidString
-                let request = UNNotificationRequest(identifier: randomIdentifier, content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: timeStamp, content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request) { error in
                     if error != nil {
                         print("something went wrong")
@@ -370,8 +374,19 @@ class AddRemainderViewController: UIViewController {
     }
     
     @IBAction func addReminderPressed(_ sender: UIButton) {
-        notification(memberName: selectMemberTextField.text!, medicineName: medicineNameTextField.text!, time1: date1,time2: date2, time3: date3, startDate: datePickerTextField.text!, interval: medicineRoutineTextField.text!)
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy-HH:mm:ss"
+        let timestamp = format.string(from: date)
+        print("******\(timestamp)")
+        
+        
+        notification(memberName: selectMemberTextField.text!, medicineName: medicineNameTextField.text!, time1: date1,time2: date2, time3: date3, startDate: datePickerTextField.text!, interval: medicineRoutineTextField.text!, timeStamp: timestamp)
+        
         self.navigationController?.popViewController(animated: true)
+        
+        InAppNotification.show(message: "Added the reminder successfully", image: #imageLiteral(resourceName: "toast_tick"), decayIn: 2, position: .bottom)
+        
         var doseTimings = dose1TextField.text!
         if dose2TextField.text! != "" {
             doseTimings += " - \(dose2TextField.text!)"
@@ -379,14 +394,17 @@ class AddRemainderViewController: UIViewController {
                 doseTimings += " - \(dose3TextField.text!)"
             }
         }
+        
         if isEdit{
-            editUsers[userIndex] = Member(memberName: selectMemberTextField.text!, medicineName:  "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings: doseTimings, schedule: medicineRoutineTextField.text!, diagnosis: diagnosisTextField.text!, startDate: datePickerTextField.text!, remindme: remindMeTextField.text!)
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [editTimeStamp])
+            editUsers[userIndex] = Member(memberName: selectMemberTextField.text!, medicineName:  "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings: doseTimings, schedule: medicineRoutineTextField.text!, diagnosis: diagnosisTextField.text!, startDate: datePickerTextField.text!, remindme: remindMeTextField.text!, timeStamp: timestamp)
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(editUsers){
                 UserDefaults.standard.set(encoded, forKey: "user")
             }
         }
-        completion?(selectMemberTextField.text!, "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings, medicineRoutineTextField.text!, diagnosisTextField.text!, datePickerTextField.text!, remindMeTextField.text!, isEdit)
+        
+        completion?(selectMemberTextField.text!, "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings, medicineRoutineTextField.text!, diagnosisTextField.text!, datePickerTextField.text!, remindMeTextField.text!, timestamp)
     }
 }
 

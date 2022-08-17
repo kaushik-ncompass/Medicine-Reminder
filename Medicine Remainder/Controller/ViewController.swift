@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var users: User!
     var members = [Member]()
     var isEdit: Bool = false
+    var notificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,16 +47,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let checkForData = retrieveAllObjects() {
-            if checkForData.count > 0 {
-                UIView.transition(with: emptyStateView, duration: 0.4,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                    self.emptyStateView.isHidden = true
-                    self.headerText.isHidden = false
-                })
-            }
-        }
         if isEdit {
             members = retrieveAllObjects()!
             configureTableView()
@@ -91,7 +82,7 @@ class ViewController: UIViewController {
           }
      }
     
-    func editReminder(indexPath: Int) {
+    func editReminder(indexPath: Int, timeStamp: String) {
         let result = self.retrieveAllObjects()
         let member = result![indexPath]
         
@@ -107,12 +98,13 @@ class ViewController: UIViewController {
         vc.editUsers = self.members
         vc.userIndex = indexPath
         vc.isEdit = true
+        vc.editTimeStamp = timeStamp
         
         self.navigationController?.pushViewController(vc, animated: true)
         isEdit = true
     }
     
-    func deleteReminder(indexPath: Int) {
+    func deleteReminder(indexPath: Int, timeStamp: String) {
         self.members.remove(at: indexPath)
         self.saveAllObjects(allObjects: self.members)
         configureTableView()
@@ -124,18 +116,31 @@ class ViewController: UIViewController {
                 self.headerText.isHidden = true
             })
         }
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [timeStamp])
+        InAppNotification.show(message: "Deleted the reminder successfully", image: #imageLiteral(resourceName: "toast_tick"), decayIn: 2, position: .bottom)
     }
 
     @IBAction func addReminderButtonTapped(_ sender: UIButton) {
 
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRemainder") as? AddRemainderViewController else { return }
         vc.navigationItem.largeTitleDisplayMode = .never
-        vc.completion = { memberName, medicineName, doseTimings, schedule, diagnosis, startDate, remindMe, isEdit in
+        vc.completion = { memberName, medicineName, doseTimings, schedule, diagnosis, startDate, remindMe, timeStamp in
             DispatchQueue.main.async {
-                let member = Member(memberName: memberName, medicineName: medicineName, doseTimings: doseTimings, schedule: schedule, diagnosis: diagnosis, startDate: startDate, remindme: remindMe)
+                let member = Member(memberName: memberName, medicineName: medicineName, doseTimings: doseTimings, schedule: schedule, diagnosis: diagnosis, startDate: startDate, remindme: remindMe, timeStamp: timeStamp)
                 self.members.append(member)
                 self.configureTableView()
                 self.saveAllObjects(allObjects: self.members)
+                if let checkForData = self.retrieveAllObjects() {
+                    print("****\(checkForData)")
+                    if checkForData.count > 0 {
+                        UIView.transition(with: self.emptyStateView, duration: 0.4,
+                                          options: .transitionCrossDissolve,
+                                          animations: {
+                            self.emptyStateView.isHidden = true
+                            self.headerText.isHidden = false
+                        })
+                    }
+                }
             }
         }
         navigationController?.pushViewController(vc, animated: true)

@@ -15,4 +15,5 @@ struct Member: Codable {
     var diagnosis: String
     var startDate: String
     var remindme: String
+    var timeStamp: String
 }

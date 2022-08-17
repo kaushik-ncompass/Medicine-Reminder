@@ -16,13 +16,14 @@ class ReminderTableViewCell: BaseCell {
     @IBOutlet weak var schedule: UILabel!
     @IBOutlet weak var editButton: UIButton!
     
+    var timeStamp: String!
     var menuItems: [UIAction] {
         return [
             UIAction(title: "Edit", handler: { (_) in
-                self.owner.editReminder(indexPath: self.indexPath.row)
+                self.owner.editReminder(indexPath: self.indexPath.row, timeStamp: self.timeStamp)
             }),
             UIAction(title: "Delete", attributes: .destructive, handler: { (_) in
-                self.owner.deleteReminder(indexPath: self.indexPath.row)
+                self.owner.deleteReminder(indexPath: self.indexPath.row, timeStamp: self.timeStamp)
             })
         ]
     }
@@ -49,5 +50,6 @@ class ReminderTableViewCell: BaseCell {
         pillImageView.image = UIImage(named: "capsule")
         editButton.menu = demoMenu
         editButton.showsMenuAsPrimaryAction = true
+        timeStamp = row.member.timeStamp
     }
 }
