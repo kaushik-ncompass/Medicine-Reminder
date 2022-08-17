@@ -11,7 +11,6 @@ import iOSDropDown
 
 class AddRemainderViewController: UIViewController {
     
-
     @IBOutlet weak var reminderStackViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var reminderStackView: UIStackView!
     @IBOutlet weak var selectMemberTextField: DropDown!
@@ -60,7 +59,6 @@ class AddRemainderViewController: UIViewController {
     var editUsers: [Member]!
     var userIndex: Int!
     var isEdit: Bool = false
-    var reload: (() -> Void)!
     
     public var completion: ((String, String, String, String, String, String, String, Bool) -> Void)?
     
@@ -68,27 +66,21 @@ class AddRemainderViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
-        
-        self.datePickerTextField.datePicker(target: self,
-                                  doneAction: #selector(doneAction),
-                                  cancelAction: #selector(cancelAction),
-                                  datePickerMode: .date)
 
         createFloatingLabel()
         createDropDown()
         setValuesToEdit()
-        
-        if let myImage = UIImage(named: "timer"){
-            dose1TextField.withImage(image: myImage)
-            dose2TextField.withImage(image: myImage)
-            dose3TextField.withImage(image: myImage)
-        }
+        setImageFordoseTextFields()
         
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if(!granted) {
                 print("Permission Denied")
             }
         }
+        self.datePickerTextField.datePicker(target: self,
+                                  doneAction: #selector(doneAction),
+                                  cancelAction: #selector(cancelAction),
+                                  datePickerMode: .date)
     }
     
     @objc
@@ -104,6 +96,14 @@ class AddRemainderViewController: UIViewController {
             let dateString = dateFormatter.string(from: datePickerView.date)
             self.datePickerTextField.text = dateString
             self.datePickerTextField.resignFirstResponder()
+        }
+    }
+    
+    func setImageFordoseTextFields() {
+        if let myImage = UIImage(named: "timer"){
+            dose1TextField.withImage(image: myImage)
+            dose2TextField.withImage(image: myImage)
+            dose3TextField.withImage(image: myImage)
         }
     }
     
@@ -255,19 +255,6 @@ class AddRemainderViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func doneActionForDoseTimings(timePicker: UIDatePicker, textField: UITextField) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mma"
-        let dateString = formatter.string(from: timePicker.date).lowercased()
-        textField.text = dateString
-        let calendar = Calendar.current
-        let newDate = calendar.date(byAdding: .minute, value: -5, to: timePicker.date)!
-        date3 = formatter.string(from: newDate).lowercased()
-        self.view.endEditing(true)
-        
-        return dateString
-    }
-    
     func updateDoseFields() {
         if self.remindMeTextField.text == "1 time a day" {
             self.dose2BgView.isHidden = true
@@ -398,7 +385,6 @@ class AddRemainderViewController: UIViewController {
             if let encoded = try? encoder.encode(editUsers){
                 UserDefaults.standard.set(encoded, forKey: "user")
             }
-            reload
         }
         completion?(selectMemberTextField.text!, "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings, medicineRoutineTextField.text!, diagnosisTextField.text!, datePickerTextField.text!, remindMeTextField.text!, isEdit)
     }
@@ -510,7 +496,13 @@ extension AddRemainderViewController: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == self.datePickerTextField {
+        if textField == self.medicineNameTextField {
+            self.view.endEditing(true)
+        } else if textField == self.diagnosisTextField {
+            self.view.endEditing(true)
+        } else if textField == self.pillCountTextField {
+            self.view.endEditing(true)
+        } else if textField == self.datePickerTextField {
             datePickerTextField.placeholder = "Start Date"
         } else if textField == self.medicineRoutineTextField {
             medicineRoutineTextField.placeholder = "Medicine Routine"

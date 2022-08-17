@@ -153,6 +153,42 @@
                                     <action selector="addReminderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BXa-hB-frA"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u86-Uk-5zg">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminder" translatesAutoresizingMaskIntoConstraints="NO" id="ZiJ-XA-ysE">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="NZp-Ab-FID"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the button below to add a new reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfr-Kv-YCV">
+                                        <rect key="frame" x="-11.5" y="272.5" width="323" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMJ-bl-d9e">
+                                        <rect key="frame" x="96.5" y="250" width="107.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" name="floatingLabel"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Lfr-Kv-YCV" firstAttribute="top" secondItem="PMJ-bl-d9e" secondAttribute="bottom" constant="2" id="1gD-Vc-L4o"/>
+                                    <constraint firstItem="ZiJ-XA-ysE" firstAttribute="top" secondItem="u86-Uk-5zg" secondAttribute="top" id="Bdc-2K-aeg"/>
+                                    <constraint firstItem="PMJ-bl-d9e" firstAttribute="top" secondItem="ZiJ-XA-ysE" secondAttribute="bottom" id="Kso-yR-M6p"/>
+                                    <constraint firstItem="Lfr-Kv-YCV" firstAttribute="centerX" secondItem="u86-Uk-5zg" secondAttribute="centerX" id="LyN-0J-Srt"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZiJ-XA-ysE" secondAttribute="trailing" id="OML-Kg-9Jp"/>
+                                    <constraint firstAttribute="width" secondItem="u86-Uk-5zg" secondAttribute="height" id="YvU-Zi-UeY"/>
+                                    <constraint firstAttribute="height" constant="300" id="oVD-s9-Evv"/>
+                                    <constraint firstItem="ZiJ-XA-ysE" firstAttribute="leading" secondItem="u86-Uk-5zg" secondAttribute="leading" id="vLI-f7-dAU"/>
+                                    <constraint firstItem="PMJ-bl-d9e" firstAttribute="centerX" secondItem="u86-Uk-5zg" secondAttribute="centerX" id="wFF-Tx-PZG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,6 +200,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iiL-hC-db2" secondAttribute="trailing" id="Lev-K2-1i4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zI3-4n-f5m" secondAttribute="trailing" id="Nu0-Bd-mvc"/>
                             <constraint firstItem="iiL-hC-db2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qbb-ga-WYk"/>
+                            <constraint firstItem="u86-Uk-5zg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XAO-nK-pQB"/>
+                            <constraint firstItem="u86-Uk-5zg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XFt-a1-vbJ"/>
                             <constraint firstAttribute="bottom" secondItem="iiL-hC-db2" secondAttribute="bottom" id="ZUT-5b-JaL"/>
                             <constraint firstItem="zI3-4n-f5m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="ZiT-oT-hR7"/>
                         </constraints>
@@ -172,6 +210,8 @@
                         <barButtonItem key="leftBarButtonItem" id="Zhb-P6-Pbn"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyStateView" destination="u86-Uk-5zg" id="dE0-xA-uUs"/>
+                        <outlet property="headerText" destination="zI3-4n-f5m" id="uNc-tG-9Fx"/>
                         <outlet property="reminderTableView" destination="iiL-hC-db2" id="Dtj-Dc-KRM"/>
                         <segue destination="DU7-yg-n8z" kind="show" identifier="addRemainder" id="CIU-i7-Izh"/>
                     </connections>
@@ -560,7 +600,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="406" id="37W-ky-DRo"/>
                                             <constraint firstAttribute="height" constant="900" id="NLg-ip-gVo"/>
                                         </constraints>
                                     </view>
@@ -638,6 +677,7 @@
     <resources>
         <image name="add" width="128" height="128"/>
         <image name="menu" width="256" height="256"/>
+        <image name="reminder" width="100" height="100"/>
         <namedColor name="floatingLabel">
             <color red="0.6119999885559082" green="0.125" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
