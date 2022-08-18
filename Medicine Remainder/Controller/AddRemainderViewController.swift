@@ -81,7 +81,8 @@ class AddRemainderViewController: UIViewController {
         self.datePickerTextField.datePicker(target: self,
                                   doneAction: #selector(doneAction),
                                   cancelAction: #selector(cancelAction),
-                                  datePickerMode: .date)
+                                  datePickerMode: .date,
+                                  datePickerPreferredStyle: .wheels)
     }
     
     @objc
@@ -121,7 +122,8 @@ class AddRemainderViewController: UIViewController {
             let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed3))
             configureDatePicker(doneBtn: doneBtn, toolbar: toolbar, textField: textField, timePicker: timePickerForDose3)
         }
-        timePicker.datePickerMode = .countDownTimer
+        timePicker.datePickerMode = .time
+        timePicker.preferredDatePickerStyle = .wheels
     }
     
     func configureDatePicker(doneBtn: UIBarButtonItem,toolbar: UIToolbar, textField: UITextField, timePicker: UIDatePicker) {
@@ -328,14 +330,14 @@ class AddRemainderViewController: UIViewController {
             if time != "" && newTime != "" {
                 let min = time[3...4]
                 let hour = time[0...1]
-                let day = startDate[0...1]
-                let month = startDate[3...4]
-                let year = startDate[6...9]
+//                let day = startDate[0...1]
+//                let month = startDate[3...4]
+//                let year = startDate[6...9]
                 
                 var dateComponents = DateComponents()
-                dateComponents.year = Int(year)
-                dateComponents.month = Int(month)
-                dateComponents.day = Int(day)
+//                dateComponents.year = Int(year)
+//                dateComponents.month = Int(month)
+//                dateComponents.day = Int(day)
                 if interval != "Daily" {
                     dateComponents.weekday = formattedDate(dateString: startDate)
                 }
@@ -378,8 +380,12 @@ class AddRemainderViewController: UIViewController {
         let format = DateFormatter()
         format.dateFormat = "dd/MM/yyyy-HH:mm:ss"
         let timestamp = format.string(from: date)
-        print("******\(timestamp)")
+        let currentMin = timestamp[14...16]
         
+//        if (((Int(min1) ?? 0) - Int(currentMin)! > 0) || ((Int(min2) ?? 0) - Int(currentMin)! > 0) || ((Int(min3) ?? 0) - Int(currentMin)! > 0)) {
+//            let alertDetail = AlertConfig(_title: "Medicine Reminder",_subTitle: "Hii \(selectMemberTextField.text!), its already time to take your \(medicineNameTextField.text!)", _buttons: [ButtonConfig(_title: "Okay", _titleColor: UIColor(named: "labelBlack"), _buttonState: true)] ,_alertType: .alert)
+//            UserAlertsViewController.show(config: alertDetail, on: self, completion: nil)
+//        }
         
         notification(memberName: selectMemberTextField.text!, medicineName: medicineNameTextField.text!, time1: date1,time2: date2, time3: date3, startDate: datePickerTextField.text!, interval: medicineRoutineTextField.text!, timeStamp: timestamp)
         
@@ -400,6 +406,7 @@ class AddRemainderViewController: UIViewController {
             if let encoded = try? encoder.encode(editUsers){
                 UserDefaults.standard.set(encoded, forKey: "user")
             }
+            InAppNotification.show(message: "Edited the reminder successfully", image: #imageLiteral(resourceName: "toast_tick"), decayIn: 2, position: .bottom)
         } else {
             InAppNotification.show(message: "Added the reminder successfully", image: #imageLiteral(resourceName: "toast_tick"), decayIn: 2, position: .bottom)
         }
@@ -541,7 +548,8 @@ extension UITextField {
     func datePicker<T>(target: T,
                        doneAction: Selector,
                        cancelAction: Selector,
-                       datePickerMode: UIDatePicker.Mode = .date) {
+                       datePickerMode: UIDatePicker.Mode = .date,
+                       datePickerPreferredStyle: UIDatePickerStyle = .wheels) {
         let screenWidth = UIScreen.main.bounds.width
         
         func buttonItem(withSystemItemStyle style: UIBarButtonItem.SystemItem) -> UIBarButtonItem {
@@ -569,6 +577,7 @@ extension UITextField {
                                                     width: screenWidth,
                                                     height: 216))
         datePicker.datePickerMode = datePickerMode
+        datePicker.preferredDatePickerStyle = datePickerPreferredStyle
         self.inputView = datePicker
         
         let toolBar = UIToolbar(frame: CGRect(x: 0,

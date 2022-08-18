@@ -13,6 +13,7 @@
 		B108F9C028A4BCD60051BC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B108F9BE28A4BCD60051BC45 /* Main.storyboard */; };
 		B108F9C228A4BCD70051BC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B108F9C128A4BCD70051BC45 /* Assets.xcassets */; };
 		B108F9C528A4BCD70051BC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B108F9C328A4BCD70051BC45 /* LaunchScreen.storyboard */; };
+		B128090628AE616A00D1E594 /* UserAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B128090528AE616A00D1E594 /* UserAlertViewController.swift */; };
 		B14F278028A67CA70097D4B3 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F277F28A67CA70097D4B3 /* iOSDropDown.framework */; };
 		B153E16028A8DE4200718B4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153E15E28A8DE4200718B4B /* ViewController.swift */; };
 		B153E16128A8DE4200718B4B /* AddRemainderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153E15F28A8DE4200718B4B /* AddRemainderViewController.swift */; };
@@ -35,6 +36,7 @@
 		B108F9C128A4BCD70051BC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B108F9C428A4BCD70051BC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B108F9C628A4BCD70051BC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B128090528AE616A00D1E594 /* UserAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertViewController.swift; sourceTree = "<group>"; };
 		B14F277F28A67CA70097D4B3 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B153E15E28A8DE4200718B4B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B153E15F28A8DE4200718B4B /* AddRemainderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRemainderViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				B1D9E4B928AD4B7E008D1ABB /* InAppNotification.swift */,
+				B128090528AE616A00D1E594 /* UserAlertViewController.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				B1AEF94728ABADCE009B29B0 /* BaseCell.swift in Sources */,
 				B108F9B928A4BCD60051BC45 /* AppDelegate.swift in Sources */,
 				B108F9BB28A4BCD60051BC45 /* SceneDelegate.swift in Sources */,
+				B128090628AE616A00D1E594 /* UserAlertViewController.swift in Sources */,
 				B1AEF94428ABAC67009B29B0 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
             endingLineNumber = "111"
-            landmarkName = "deleteReminder(indexPath:timeStamp:)"
+            landmarkName = "editReminder(indexPath:timeStamp:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
