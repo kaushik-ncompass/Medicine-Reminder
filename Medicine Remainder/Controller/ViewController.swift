@@ -27,6 +27,27 @@ class ViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
         
+        configureTable()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isEdit {
+            UIView.transition(with: self.view, duration: 0.4,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                self.members = self.retrieveAllObjects()!
+                self.reloadTable()
+                self.isEdit = false
+            })
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    func configureTable() {
         if let checkForData = retrieveAllObjects() {
             members = checkForData
             if checkForData.count > 0 {
@@ -44,21 +65,8 @@ class ViewController: UIViewController {
         }
         self.users = User.instance(members: self.members)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if isEdit {
-            members = retrieveAllObjects()!
-            configureTableView()
-            isEdit = false
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
 
-    func configureTableView() {
+    func reloadTable() {
         users = User.instance(members: members)
         self.reminderTableView.reloadData()
     }
@@ -70,7 +78,6 @@ class ViewController: UIViewController {
                 return loadedPerson
             }
         }
-//        return [Member(memberName: "", medicineName: "", doseTimings: "", schedule: "", diagnosis: "", startDate: "", remindme: "")]
         return nil
      }
     
@@ -107,7 +114,7 @@ class ViewController: UIViewController {
     func deleteReminder(indexPath: Int, timeStamp: String) {
         self.members.remove(at: indexPath)
         self.saveAllObjects(allObjects: self.members)
-        configureTableView()
+        reloadTable()
         if members.count == 0 {
             UIView.transition(with: emptyStateView, duration: 0.4,
                               options: .transitionCrossDissolve,
@@ -128,10 +135,9 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 let member = Member(memberName: memberName, medicineName: medicineName, doseTimings: doseTimings, schedule: schedule, diagnosis: diagnosis, startDate: startDate, remindme: remindMe, timeStamp: timeStamp)
                 self.members.append(member)
-                self.configureTableView()
+                self.reloadTable()
                 self.saveAllObjects(allObjects: self.members)
                 if let checkForData = self.retrieveAllObjects() {
-                    print("****\(checkForData)")
                     if checkForData.count > 0 {
                         UIView.transition(with: self.emptyStateView, duration: 0.4,
                                           options: .transitionCrossDissolve,

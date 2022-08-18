@@ -385,8 +385,6 @@ class AddRemainderViewController: UIViewController {
         
         self.navigationController?.popViewController(animated: true)
         
-        InAppNotification.show(message: "Added the reminder successfully", image: #imageLiteral(resourceName: "toast_tick"), decayIn: 2, position: .bottom)
-        
         var doseTimings = dose1TextField.text!
         if dose2TextField.text! != "" {
             doseTimings += " - \(dose2TextField.text!)"
@@ -402,6 +400,8 @@ class AddRemainderViewController: UIViewController {
             if let encoded = try? encoder.encode(editUsers){
                 UserDefaults.standard.set(encoded, forKey: "user")
             }
+        } else {
+            InAppNotification.show(message: "Added the reminder successfully", image: #imageLiteral(resourceName: "toast_tick"), decayIn: 2, position: .bottom)
         }
         
         completion?(selectMemberTextField.text!, "\(pillCountTextField.text!) - \(medicineNameTextField.text!)", doseTimings, medicineRoutineTextField.text!, diagnosisTextField.text!, datePickerTextField.text!, remindMeTextField.text!, timestamp)
